@@ -1,4 +1,4 @@
-package cn.tzl.clothes;
+package cn.tzl.yishow;
 
 import org.junit.Test;
 

@@ -1,10 +1,8 @@
-package cn.tzl.clothes.Module_Login.Bean;
+package cn.tzl.yishow.Module_Login.Bean;
 
 /**
  * Created by Administrator on 2017/11/16 0016.
  */
-
-import cn.bmob.v3.BmobObject;
 
 import cn.bmob.v3.BmobObject;
 

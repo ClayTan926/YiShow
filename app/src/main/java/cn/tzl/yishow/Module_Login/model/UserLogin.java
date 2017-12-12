@@ -1,4 +1,4 @@
-package cn.tzl.clothes.Module_Login.model;
+package cn.tzl.yishow.Module_Login.model;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,14 +6,13 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.util.ConcurrentModificationException;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
-import cn.tzl.clothes.MainActivity;
-import cn.tzl.clothes.Module_Login.Bean.User;
+import cn.tzl.yishow.MainActivity;
+import cn.tzl.yishow.Module_Login.Bean.User;
 
 /**
  * Created by Administrator on 2017/11/25 0025.

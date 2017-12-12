@@ -1,11 +1,11 @@
-package cn.tzl.clothes.Module_Login.model;
+package cn.tzl.yishow.Module_Login.model;
 
 import android.content.Context;
 import android.widget.Toast;
 
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
-import cn.tzl.clothes.Module_Login.Bean.User;
+import cn.tzl.yishow.Module_Login.Bean.User;
 
 /**
  * Created by Administrator on 2017/11/18 0018.

@@ -1,4 +1,4 @@
-package cn.tzl.clothes;
+package cn.tzl.yishow;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("cn.tzl.clothes", appContext.getPackageName());
+        assertEquals("cn.tzl.yishow", appContext.getPackageName());
     }
 }
