@@ -79,7 +79,7 @@
                 android:layout_height="match_parent"
                 android:textSize="18sp"
                 android:background="@color/loginbutton"
-                android:textColor="@color/loginbuttonText"
+                android:textColor="@color/mywhite"
                 android:text="@string/login_btn"/>
         </android.support.v7.widget.CardView>
         <TextView
