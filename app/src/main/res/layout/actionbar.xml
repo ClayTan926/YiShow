@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
+        android:layout_height="wrap_content">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
         <android.support.v7.widget.Toolbar
-            android:id="@+id/catetoolbar"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
             android:background="@color/myblack"
             android:orientation="horizontal">
             <TextView
@@ -21,35 +22,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="@string/actionbar_cate"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"/>
         </android.support.v7.widget.Toolbar>
+        <!--<Toolbar
 
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="10dp"
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>-->
 
     </android.support.design.widget.AppBarLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#fbfbfb"
-        android:orientation="horizontal" >
-
-        <ListView
-            android:id="@+id/lv_category"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:scrollbars="none"
-            android:layout_weight="1"
-            android:background="#f4f4f4"
-            android:divider="@android:color/transparent"
-            android:layout_marginBottom="12dp"/>
-
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4.5" />
-    </LinearLayout>
 </LinearLayout>

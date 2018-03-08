@@ -1,7 +1,6 @@
-package cn.tzl.yishow;
+package cn.tzl.yishow.Utils;
 
 import android.content.Context;
-import android.net.Uri;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;

@@ -5,18 +5,19 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.tzl.yishow.Base.BaseActivity;
 
 
 public class MainActivity extends BaseActivity implements BottomNavigationBar.OnTabSelectedListener {
@@ -26,6 +27,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     @BindView(R.id.viewpager)
     ViewPager viewpager;
 
+    Toolbar mtoolbar;
     //数据源的集合
     private List<Fragment> list = new ArrayList<Fragment>();
 
@@ -73,6 +75,25 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         transaction.commit();
     }
 
+    private void initActionBar(int position){
+        mtoolbar=findViewById(R.id.toolbar);
+        ToolbarHelper.addMiddleTitle(getApplicationContext(),"分类",mtoolbar);
+        String actionBarTitle=null;
+        switch (position){
+            case 1:
+                actionBarTitle="分类";
+                break;
+            case 2:
+                actionBarTitle="推荐搭配";
+                break;
+            case 3:
+                actionBarTitle="秀场";
+                break;
+        }
+        Log.e(TAG, "initActionBar: "+mtoolbar.getResources());
+        ToolbarHelper.addMiddleTitle(getApplicationContext(),actionBarTitle,mtoolbar);
+        setSupportActionBar(mtoolbar);
+    }
     /**
      * Tab点击处理
      **/
@@ -130,6 +151,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     public void onTabReselected(int position) {
         Log.d(TAG, "onTabReselected() called with: " + "position = [" + position + "]");
     }
+
+
 }
 
 
