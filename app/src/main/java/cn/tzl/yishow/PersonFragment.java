@@ -13,7 +13,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.tzl.yishow.Utils.ActivityCollector;
+import cn.tzl.yishow.utils.ActivityCollector;
 
 
 /**

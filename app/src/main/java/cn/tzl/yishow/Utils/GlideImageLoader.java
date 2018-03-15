@@ -1,4 +1,4 @@
-package cn.tzl.yishow.Utils;
+package cn.tzl.yishow.utils;
 
 import android.content.Context;
 import android.widget.ImageView;

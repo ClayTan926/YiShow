@@ -1,4 +1,4 @@
-package cn.tzl.yishow.Module_Login;
+package cn.tzl.yishow.module_Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.tzl.yishow.Module_Login.model.UserLogin;
+import cn.tzl.yishow.module_Login.model.UserLogin;
 import cn.tzl.yishow.R;
 
 public class LoginActivity extends AppCompatActivity {

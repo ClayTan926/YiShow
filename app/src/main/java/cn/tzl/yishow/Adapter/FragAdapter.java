@@ -1,4 +1,4 @@
-package cn.tzl.yishow.Adapter;
+package cn.tzl.yishow.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

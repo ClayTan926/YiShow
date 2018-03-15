@@ -13,7 +13,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.tzl.yishow.Adapter.CollocationAdapter;
+import cn.tzl.yishow.adapter.CollocationAdapter;
 
 /**
  * Created by Administrator on 2017/12/14 0014.

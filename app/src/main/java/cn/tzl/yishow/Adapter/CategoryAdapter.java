@@ -1,4 +1,4 @@
-package cn.tzl.yishow.Adapter;
+package cn.tzl.yishow.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

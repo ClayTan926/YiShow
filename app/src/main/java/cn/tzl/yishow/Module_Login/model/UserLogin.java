@@ -1,4 +1,4 @@
-package cn.tzl.yishow.Module_Login.model;
+package cn.tzl.yishow.module_Login.model;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,7 +12,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.tzl.yishow.MainActivity;
-import cn.tzl.yishow.Module_Login.Bean.User;
+import cn.tzl.yishow.module_Login.bean.User;
 
 /**
  * Created by Administrator on 2017/11/25 0025.

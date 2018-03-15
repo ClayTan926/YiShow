@@ -1,4 +1,4 @@
-package cn.tzl.yishow.Module_Login;
+package cn.tzl.yishow.module_Login;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.v3.Bmob;
-import cn.tzl.yishow.Module_Login.model.UserRegister;
+import cn.tzl.yishow.module_Login.model.UserRegister;
 import cn.tzl.yishow.R;
 //import retrofit2.Retrofit;
 

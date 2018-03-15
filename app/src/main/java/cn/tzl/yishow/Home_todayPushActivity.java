@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import cn.tzl.yishow.Adapter.FragAdapter;
+import cn.tzl.yishow.adapter.FragAdapter;
 
 /**
  * Created by Tanzl on 2018/2/23.

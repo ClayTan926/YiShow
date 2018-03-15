@@ -23,8 +23,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.tzl.yishow.Adapter.HomeAdapter;
-import cn.tzl.yishow.Utils.GlideImageLoader;
+import cn.tzl.yishow.adapter.HomeAdapter;
+import cn.tzl.yishow.utils.GlideImageLoader;
 
 /**
  * Created by Administrator on 2017/12/14 0014.

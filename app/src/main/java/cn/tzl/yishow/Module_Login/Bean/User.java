@@ -1,4 +1,4 @@
-package cn.tzl.yishow.Module_Login.Bean;
+package cn.tzl.yishow.module_Login.bean;
 
 /**
  * Created by Administrator on 2017/11/16 0016.

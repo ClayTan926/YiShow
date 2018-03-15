@@ -17,7 +17,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.tzl.yishow.Adapter.CategoryContentAdapter;
+import cn.tzl.yishow.adapter.CategoryContentAdapter;
 
 
 /**

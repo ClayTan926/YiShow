@@ -1,4 +1,4 @@
-package cn.tzl.yishow.Base;
+package cn.tzl.yishow.base;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 
-import cn.tzl.yishow.Utils.ActivityCollector;
+import cn.tzl.yishow.utils.ActivityCollector;
 
 
 public class BaseActivity extends AppCompatActivity {

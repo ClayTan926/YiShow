@@ -25,19 +25,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Base.BaseActivity">
+        <activity android:name=".base.BaseActivity">
         </activity>
 
         <activity android:name=".HelpActivity">
         </activity>
 
         <activity
-            android:name="cn$tzl$yishow$Module_Login.RegisterActivity"
+            android:name="module_Login.RegisterActivity"
             android:launchMode="singleTask">
         </activity>
 
         <activity
-            android:name="cn$tzl$yishow.Module_Login.LoginActivity"
+            android:name="cn$tzl$yishow.module_Login.LoginActivity"
             android:label="@string/title_activity_login"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar">
