@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+   <android.support.design.widget.AppBarLayout
+       android:id="@+id/layout_appBar"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@color/myblack"
+       android:theme="@style/AppTheme.NoActionBar">
+      <android.support.v7.widget.Toolbar
+       android:id="@+id/toolbar_home"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:visibility="gone">
+      <TextView
+          android:id="@+id/tv_toolbar"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:text="@string/app_name"
+          android:textColor="@color/mywhite"
+          android:textSize="22sp"
+          android:textStyle="bold|italic"/>
+   </android.support.v7.widget.Toolbar>
+   </android.support.design.widget.AppBarLayout>
+   <com.github.jdsjlzx.recyclerview.LRecyclerView
+       android:id="@+id/home_recyclerview"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginBottom="25dp">
+   </com.github.jdsjlzx.recyclerview.LRecyclerView>
+
+
+</LinearLayout>
