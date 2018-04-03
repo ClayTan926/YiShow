@@ -44,7 +44,7 @@
                     android:background="#FFFFFF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/login_inputmobile"/>
+                    android:hint="@string/login_inputMobile"/>
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
@@ -62,7 +62,8 @@
                     android:background="#FFFFFF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/login_inputpassword"/>
+                    android:inputType="textPassword"
+                    android:hint="@string/login_inputPassword"/>
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
@@ -86,7 +87,7 @@
             android:id="@+id/tv_forget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login_forgrt"
+            android:text="@string/login_forget"
             android:textSize="15sp"
             android:layout_gravity="bottom|start"
             android:layout_marginStart="10dp"/>

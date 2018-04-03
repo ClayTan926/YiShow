@@ -37,7 +37,7 @@
             android:layout_marginTop="23.0dip"
             android:includeFontPadding="false"
             android:maxHeight="16.0sp"
-            android:text="@string/mesure_sex"
+            android:text="@string/measure_sex"
             android:textColor="#cc222222"
             android:textSize="15.0sp" />
 

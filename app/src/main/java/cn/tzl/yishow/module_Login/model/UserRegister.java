@@ -7,10 +7,6 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import cn.tzl.yishow.module_Login.bean.User;
 
-/**
- * Created by Administrator on 2017/11/18 0018.
- */
-
 public class UserRegister {
 
     public static void userRegister(final Context mcontext, String mobile, String password) {

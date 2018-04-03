@@ -94,10 +94,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         ToolbarHelper.addMiddleTitle(getApplicationContext(),actionBarTitle,mtoolbar);
         setSupportActionBar(mtoolbar);
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
     /**
      * Tab点击处理
      **/

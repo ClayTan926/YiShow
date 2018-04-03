@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-=======
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -13,11 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-<<<<<<< HEAD
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-=======
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
         android:background="@color/mywhite"
         app:cardCornerRadius="10dp">
         <LinearLayout
@@ -27,20 +21,16 @@
             <ImageView
                 android:id="@+id/iv_allclothes"
                 android:layout_width="match_parent"
-                android:layout_height="380dp"
+                android:layout_height="350dp"
                 android:src="@mipmap/cloths"
                 android:scaleType="fitCenter"
                 android:contentDescription="@null"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-<<<<<<< HEAD
                 android:orientation="horizontal"
                 android:background="@color/gray"
                 android:layout_marginTop="5dp">
-=======
-                android:orientation="horizontal">
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
                 <ImageView
                     android:id="@+id/iv_clothesone"
                     android:layout_width="80dp"
@@ -70,25 +60,15 @@
                     android:contentDescription="@null"/>
             </LinearLayout>
             <TextView
-<<<<<<< HEAD
                 android:id="@+id/tv_description"
-=======
-                android:id="@+id/tv_clothesdescription"
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textSize="12sp"
-<<<<<<< HEAD
                 android:text="当季最热门服装，次啊用是大家谅解哦克隆技术都颇多"
-=======
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
                 android:maxLines="5"/>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
-<<<<<<< HEAD
 </RelativeLayout>
-=======
-</LinearLayout>
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
+

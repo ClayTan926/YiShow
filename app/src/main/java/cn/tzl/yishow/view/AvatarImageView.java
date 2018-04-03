@@ -34,10 +34,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-<<<<<<< HEAD
 import android.widget.ImageView;
-=======
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,11 +48,8 @@ import java.util.Locale;
  * Created by Administrator on 2017/12/27 0027.
  */
 
-<<<<<<< HEAD
-public class AvatarImageView extends ImageView {
-=======
-public class AvatarImageView extends AppCompatImageView {
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
+public class AvatarImageView extends android.support.v7.widget.AppCompatImageView {
+
 
     //在StartActivityForResult方法中的requestCode
     private static final int REQUEST_IMAGE_BY_CAMERA = 2049;
@@ -757,7 +751,7 @@ public class AvatarImageView extends AppCompatImageView {
         /**
          * 拍照
          */
-        public AvatarDialog setPositiveListener(final OnClickListener listener) {
+        private AvatarDialog setPositiveListener(final OnClickListener listener) {
             mPhotoButtonListener = listener;
             return this;
         }
@@ -765,101 +759,101 @@ public class AvatarImageView extends AppCompatImageView {
         /**
          * 选择照片
          */
-        public AvatarDialog setNegativeListener(final OnClickListener listener) {
+        private AvatarDialog setNegativeListener(final OnClickListener listener) {
             mChoosePicListener = listener;
             return this;
         }
 
 
-        public void setTitleColor(String titleColor) {
+        private void setTitleColor(String titleColor) {
             if (!TextUtils.isEmpty(titleColor)) {
                 this.titleColor = titleColor;
             }
         }
 
-        public void setBtnBackGroundColor(String btnColor) {
+        private void setBtnBackGroundColor(String btnColor) {
             if (!TextUtils.isEmpty(btnColor)) {
                 this.btnBackgroundColor = btnColor;
             }
         }
 
-        public void setTitleLineColor(String titleLineColor) {
+        private void setTitleLineColor(String titleLineColor) {
             if (!TextUtils.isEmpty(titleLineColor)) {
                 this.titleLineColor = titleLineColor;
             }
         }
 
-        public void setLineColor(String lineColor) {
+        private void setLineColor(String lineColor) {
             if (!TextUtils.isEmpty(lineColor)) {
                 this.lineColor = lineColor;
             }
         }
 
-        public void setTitlePaddingTopBottom(int titlePaddingTopBottom) {
+        private void setTitlePaddingTopBottom(int titlePaddingTopBottom) {
             if (titlePaddingTopBottom > 0) {
                 this.titlePaddingTopBottom = titlePaddingTopBottom;
             }
         }
 
-        public void setBtnPaddingTopBottom(int btnPaddingTopBottom) {
+        private void setBtnPaddingTopBottom(int btnPaddingTopBottom) {
             if (btnPaddingTopBottom > 0) {
                 this.btnPaddingTopBottom = btnPaddingTopBottom;
             }
         }
 
-        public void setTitleText(CharSequence mTitle) {
+        private void setTitleText(CharSequence mTitle) {
             if (!TextUtils.isEmpty(mTitle)) {
                 this.mTitle = mTitle;
             }
         }
 
-        public void setPhotoButtonText(CharSequence mPhotoButtonText) {
+        private void setPhotoButtonText(CharSequence mPhotoButtonText) {
             if (!TextUtils.isEmpty(mPhotoButtonText)) {
                 this.mPhotoButtonText = mPhotoButtonText;
             }
         }
 
-        public void setChoosePicButtonText(CharSequence mChoosePicButtonText) {
+        private void setChoosePicButtonText(CharSequence mChoosePicButtonText) {
             if (!TextUtils.isEmpty(mChoosePicButtonText)) {
                 this.mChoosePicButtonText = mChoosePicButtonText;
             }
         }
 
-        public void setDialogCorner(int dialogCorner) {
+        private void setDialogCorner(int dialogCorner) {
             if (dialogCorner >= 0) {
                 this.dialogCorner = dialogCorner;
             }
         }
 
-        public void setAnimResId(int animResId) {
+        private void setAnimResId(int animResId) {
             this.animResId = animResId;
         }
 
-        public void setBtnTextColor(String btnTextColor) {
+        private void setBtnTextColor(String btnTextColor) {
             if (!TextUtils.isEmpty(btnTextColor)) {
                 this.btnTextColor = btnTextColor;
             }
         }
 
-        public void setTitleTextSize(float titleTextSize) {
+        private void setTitleTextSize(float titleTextSize) {
             if (titleTextSize > 0) {
                 this.titleTextSize = titleTextSize;
             }
         }
 
-        public void setBtnTextSize(float btnTextSize) {
+        private void setBtnTextSize(float btnTextSize) {
             if (btnTextSize > 0) {
                 this.btnTextSize = btnTextSize;
             }
         }
 
-        public void setDialogBackgroundColor(String dialogBackgroundColor) {
+        private void setDialogBackgroundColor(String dialogBackgroundColor) {
             if (!TextUtils.isEmpty(dialogBackgroundColor)) {
                 this.dialogBackgroundColor = dialogBackgroundColor;
             }
         }
 
-        public void setBtnClickedColor(String btnClickedColor) {
+        private void setBtnClickedColor(String btnClickedColor) {
             if (!TextUtils.isEmpty(btnClickedColor)) {
                 this.btnClickedColor = btnClickedColor;
             }

@@ -11,9 +11,6 @@ import java.util.List;
 
 import cn.tzl.yishow.R;
 
-/**
- * Created by Tanzl on 2018/1/27.
- */
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
@@ -23,7 +20,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
         TextView show;
         ImageView iv_item;
-        public ViewHolder(View view){
+        private ViewHolder(View view){
             super(view);
             show=view.findViewById(R.id.item_home_text);
             iv_item=view.findViewById(R.id.iv_item);
@@ -51,11 +48,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public int getItemCount() {
         return mlist.size();
     }
-
-
-
-
-
 
 
 }

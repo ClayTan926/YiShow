@@ -37,7 +37,7 @@ public class TodayPushAdapter extends RecyclerView.Adapter<TodayPushAdapter.View
             clothesOne=itemView.findViewById(R.id.iv_clothesone);
             clothesTwo=itemView.findViewById(R.id.iv_clothestwo);
             clothesThree=itemView.findViewById(R.id.iv_clothesthree);
-            clothesdDescription=itemView.findViewById(R.id.tv_clothesdescription);
+            clothesdDescription=itemView.findViewById(R.id.tv_description);
         }
     }
     @Override

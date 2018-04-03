@@ -2,8 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
    <android.support.design.widget.AppBarLayout
        android:id="@+id/layout_appBar"
@@ -27,36 +25,14 @@
           android:textStyle="bold|italic"/>
    </android.support.v7.widget.Toolbar>
    </android.support.design.widget.AppBarLayout>
-=======
-    android:orientation="vertical">
 
-
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
    <com.github.jdsjlzx.recyclerview.LRecyclerView
        android:id="@+id/home_recyclerview"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:layout_marginBottom="25dp">
-<<<<<<< HEAD
    </com.github.jdsjlzx.recyclerview.LRecyclerView>
 
 
-=======
 
-   </com.github.jdsjlzx.recyclerview.LRecyclerView>
-
-
-    <!--<TextView
-        android:id="@+id/header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="this is header"
-        android:gravity="center"/>
-    <TextView
-        android:id="@+id/footer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="this is footer"
-        android:gravity="center"/>-->
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 </LinearLayout>

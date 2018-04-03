@@ -21,9 +21,9 @@ import cn.tzl.yishow.module_Login.bean.User;
 public class UserLogin {
     /**
      * @author tzl
-     * @param context
-     * @param Mobile
-     * @param Password
+     * @param context 上下文
+     * @param Mobile 手机号
+     * @param Password 密码
      */
     public static void userLogin(final Context context, String Mobile, final String Password ){
         BmobQuery<User> query = new BmobQuery<User>();

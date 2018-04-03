@@ -5,10 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     android:fitsSystemWindows="true"
-=======
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
     tools:context="cn.tzl.yishow.MainActivity">
 
     <LinearLayout

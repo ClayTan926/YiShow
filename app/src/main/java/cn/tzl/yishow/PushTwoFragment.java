@@ -11,11 +11,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by Tanzl on 2018/2/23.
-<<<<<<< HEAD
  * Class Comment:推荐2
-=======
- * Class Comment:
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
  */
 
 public class PushTwoFragment extends Fragment {

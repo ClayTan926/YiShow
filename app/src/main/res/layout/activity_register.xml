@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:background="#ffffff"
-            android:hint="@string/register_inputmobile"
+            android:hint="@string/register_inputMobile"
             android:padding="8dp"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
@@ -50,7 +50,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:padding="8dp"
-                android:hint="@string/register_inputpassword"
+                android:hint="@string/register_inputPassword"
                />
 
         <!-- 分割线-->

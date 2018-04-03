@@ -59,11 +59,8 @@ public class DisplayFragment extends Fragment {
         String agrs1 = bundle.getString("agrs1");
         TextView tv = view.findViewById(R.id.tv_display);
         tv.setText(agrs1);*/
-<<<<<<< HEAD
         initView();
-=======
-       initView();
->>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
+
         return view;
     }
 
