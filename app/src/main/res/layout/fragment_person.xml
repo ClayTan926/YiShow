@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <RelativeLayout
+=======
+<android.support.constraint.ConstraintLayout
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="@color/myblack">
 
 
@@ -17,12 +22,34 @@
         app:cardCornerRadius="10dp"
         android:layout_alignParentTop="true"
         android:layout_margin="80dp">
+=======
+    android:background="@color/myblack"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="280dp"
+        android:layout_height="170dp"
+        android:layout_gravity="center|top"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.196">
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+<<<<<<< HEAD
             <cn.tzl.yishow.view.AvatarImageView
                 android:id="@+id/headportrait"
                 android:layout_width="110dp"
@@ -33,17 +60,31 @@
                 android:paddingTop="8dp"
                 android:layout_marginStart="8dp"/>
             <!--<de.hdodenhof.circleimageview.CircleImageView
+=======
+            <de.hdodenhof.circleimageview.CircleImageView
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
                 android:id="@+id/image"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_gravity="center"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
+<<<<<<< HEAD
                 android:paddingTop="8dp"
                 android:src="@mipmap/avaterimage"
                 app:civ_border_color="@color/myblack"
                 app:civ_border_width="1dp" />
 -->
+=======
+                android:paddingTop="10dp"
+                android:src="@mipmap/avaterimage"
+                app:civ_border_color="@color/myblack"
+                app:civ_border_width="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="47dp" />
+
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
             <TextView
                 android:id="@+id/tv_onclick_login"
                 android:layout_width="wrap_content"
@@ -59,13 +100,27 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="400dp"
+=======
+        android:layout_height="420dp"
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
         android:layout_marginEnd="8dp"
         android:layout_marginTop="12dp"
         android:background="@color/mywhite"
         android:orientation="vertical"
+<<<<<<< HEAD
         android:padding="25dp"
         android:layout_alignParentBottom="true">
+=======
+        android:padding="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 
         <TextView
             android:id="@+id/tv_myCollection"
@@ -148,4 +203,8 @@
 
     </LinearLayout>
 
+<<<<<<< HEAD
 </RelativeLayout>
+=======
+</android.support.constraint.ConstraintLayout>
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141

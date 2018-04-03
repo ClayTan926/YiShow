@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+=======
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -31,7 +37,15 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_todayPush"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="match_parent">
 
     </android.support.v4.view.ViewPager>
 </LinearLayout>
+=======
+        android:layout_height="match_parent"
+        android:layout_marginBottom="25dp">
+
+    </android.support.v4.view.ViewPager>
+</android.support.constraint.ConstraintLayout>
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141

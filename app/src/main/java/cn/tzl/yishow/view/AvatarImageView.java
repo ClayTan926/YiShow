@@ -34,7 +34,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+<<<<<<< HEAD
 import android.widget.ImageView;
+=======
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,7 +51,11 @@ import java.util.Locale;
  * Created by Administrator on 2017/12/27 0027.
  */
 
+<<<<<<< HEAD
 public class AvatarImageView extends ImageView {
+=======
+public class AvatarImageView extends AppCompatImageView {
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 
     //在StartActivityForResult方法中的requestCode
     private static final int REQUEST_IMAGE_BY_CAMERA = 2049;

@@ -11,6 +11,9 @@
     <color name="mygray">#a9aead</color>
     <color name="myblack">#0b0b0b</color>
     <color name="backgroundGray">#dedada</color>
+<<<<<<< HEAD
     <color name="gray">#D3D3D3</color>
     <color name="black">#000000</color>
+=======
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 </resources>
