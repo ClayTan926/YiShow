@@ -1,6 +1,7 @@
 package cn.tzl.yishow;
 
 
+<<<<<<< HEAD
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -8,13 +9,23 @@ import android.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+=======
+import android.app.Fragment;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.TextView;
 
+=======
+import android.widget.Toast;
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
@@ -22,25 +33,36 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.tzl.yishow.adapter.HomeAdapter;
+<<<<<<< HEAD
 import cn.tzl.yishow.animation.ToolbarAnimation;
+=======
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 import cn.tzl.yishow.utils.GlideImageLoader;
 
 /**
  * Created by Administrator on 2017/12/14 0014.
  */
 
+<<<<<<< HEAD
 public class HomeFragment extends Fragment implements View.OnClickListener {
+=======
+public class HomeFragment extends Fragment implements View.OnClickListener{
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 
 
     @BindView(R.id.home_recyclerview)
     LRecyclerView homeRecyclerview;
+<<<<<<< HEAD
     @BindView(R.id.toolbar_home)
     Toolbar toolbar_home;
     @BindView(R.id.tv_toolbar)
@@ -48,6 +70,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.layout_appBar)
     AppBarLayout mAppBarLayout;
 
+=======
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 
     //@BindView(R.id.home_banner)
     Banner banner;
@@ -55,15 +79,25 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     Button btn_measure;
     //@BindView(R.id.btn_home_todayPush)
     Button btn_todyPush;
+<<<<<<< HEAD
 
+=======
+    //@BindView(R.id.btn_home_show)
+    Button btn_show;
+    //@BindView(R.id.btn_home_hot)
+    Button btn_hot;
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 
     HomeAdapter homeAdapter;
     LRecyclerViewAdapter mLRecyclerViewAdapter;
 
     private static final String TAG = "HomeFragment";
+<<<<<<< HEAD
     private static boolean isScroll = false;
 
 
+=======
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
     public static HomeFragment newInstance(String param1) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
@@ -85,6 +119,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+<<<<<<< HEAD
         View headerView = inflater.inflate(R.layout.header_home, container, false);
         ButterKnife.bind(this, view);
 
@@ -92,10 +127,23 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         initBanner(headerView);
         initRecyclerview(headerView);
 
+=======
+        View headerView=inflater.inflate(R.layout.header_home,container,false);
+        ButterKnife.bind(this,view);
+        //ButterKnife.bind(view.getContext(),headerView);
+
+        initBanner(headerView);
+        initRecyclerview(headerView);
+        /*Bundle bundle = getArguments();
+        String agrs1 = bundle.getString("agrs1");
+        TextView tv = (TextView)view.findViewById(R.id.tv_home);
+        tv.setText(agrs1);*/
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
         return view;
     }
 
 
+<<<<<<< HEAD
     public void initBanner(View view) {
         banner = view.findViewById(R.id.home_banner);
         btn_measure = view.findViewById(R.id.btn_home_measure);
@@ -105,6 +153,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         btn_todyPush.setOnClickListener(this);
 
         List<Integer> images = new ArrayList<>();
+=======
+
+    public void initBanner(View view){
+        banner=view.findViewById(R.id.home_banner);
+        btn_measure=view.findViewById(R.id.btn_home_measure);
+        btn_todyPush=view.findViewById(R.id.btn_home_todayPush);
+        btn_show=view.findViewById(R.id.btn_home_show);
+        btn_hot=view.findViewById(R.id.btn_home_hot);
+
+        List<Integer> images=new ArrayList<>();
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
         images.add(R.mipmap.home);
         images.add(R.mipmap.category);
 
@@ -129,6 +188,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
+<<<<<<< HEAD
     public void initRecyclerview(View headerView) {
 
         List<String> list = new ArrayList<>();
@@ -174,6 +234,24 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         // mLRecyclerViewAdapter.addFooterView(foot);
         homeRecyclerview.setAdapter(mLRecyclerViewAdapter);
 
+=======
+    public void initRecyclerview(View headerView){
+
+        List<String> list=new ArrayList<>();
+        for (int i=0;i<20;i++){
+            list.add(""+i);
+        }
+        homeAdapter=new HomeAdapter(list);
+        homeRecyclerview.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+
+        mLRecyclerViewAdapter = new LRecyclerViewAdapter(homeAdapter);
+        mLRecyclerViewAdapter.addHeaderView(headerView);
+       // mLRecyclerViewAdapter.addFooterView(foot);
+
+        homeRecyclerview.setAdapter(mLRecyclerViewAdapter);
+
+
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
     }
 
 
@@ -194,6 +272,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+<<<<<<< HEAD
         switch (view.getId()) {
             case R.id.btn_home_measure:
                 Log.e(TAG, "onClick: 按键1");
@@ -214,4 +293,24 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onDestroyView();
 
     }
+=======
+        switch (view.getId()){
+            case R.id.btn_home_measure:
+                Intent measureIntent=new Intent(view.getContext(),Home_mesureActivity.class);
+                startActivity(measureIntent);
+                break;
+            case R.id.btn_home_todayPush:
+                Intent todayPushIntent=new Intent(view.getContext(),Home_todayPushActivity.class);
+                startActivity(todayPushIntent);
+                break;
+            case R.id.btn_home_show:
+                break;
+            case R.id.btn_home_hot:
+                break;
+            default:
+                Log.d(TAG, "onClick: "+view.getId());
+                break;
+        }
+    }
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 }

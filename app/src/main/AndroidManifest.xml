@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     package="cn.tzl.yishow">
 
     <!-- 允许联网 -->
@@ -16,6 +17,25 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 允许读取手机状态 用于创建BmobInstallation -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+=======
+          package="cn.tzl.yishow">
+    <!-- 读取设备外部存储空间 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 允许联网 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 获取wifi网络状态的信息 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!-- 获取sd卡写的权限，用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- if you want to load images from a file OR from the internet -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 允许读取手机状态 用于创建BmobInstallation -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 
     <application
         android:allowBackup="true"
@@ -24,6 +44,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+<<<<<<< HEAD
         <activity android:name="base.BaseActivity"></activity>
         <activity android:name=".HelpActivity"></activity>
         <activity
@@ -51,6 +72,39 @@
             android:name=".Home_measureActivity"
             android:launchMode="singleTask"></activity>
         <activity android:name=".ShowDataActivity"></activity>
+=======
+        <activity android:name=".base.BaseActivity">
+        </activity>
+
+        <activity android:name=".HelpActivity">
+        </activity>
+
+        <activity
+            android:name="module_Login.RegisterActivity"
+            android:launchMode="singleTask">
+        </activity>
+
+        <activity
+            android:name="cn$tzl$yishow.module_Login.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".Home_todayPushActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name="cn.tzl.yishow.MainActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
     </application>
 
 </manifest>

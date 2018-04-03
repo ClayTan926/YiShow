@@ -18,6 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_margin="65dp">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -147,5 +148,4 @@
             android:textStyle="bold" />
 
     </LinearLayout>
-
 </RelativeLayout>

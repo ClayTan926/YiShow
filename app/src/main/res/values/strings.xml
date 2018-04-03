@@ -29,9 +29,12 @@
     <string name="actionbar_collo">推荐搭配</string>
     <string name="actionbar_display">Show</string>
     <string name="actionbar_todaypush">今日推荐</string>
+<<<<<<< HEAD
     <string name="mesure_sex">性别</string>
     <string name="measure_height">身高(cm)</string>
     <string name="measure_weight">体重(kg)</string>
     <string name="measure_next">下一步</string>
+=======
+>>>>>>> f5c1411b0617134f9ead25e38708c2168ec5e141
 
 </resources>
