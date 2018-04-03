@@ -1,6 +1,7 @@
 package cn.tzl.yishow;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -37,6 +38,7 @@ public class Home_measureActivity extends AppCompatActivity {
     private String gender;
     private String weight;
     private String height;
+    private SharedPreferences sp_bodyData;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,7 +80,9 @@ public class Home_measureActivity extends AppCompatActivity {
                 intent.putExtra("gender", gender);
                 intent.putExtra("height", height);
                 intent.putExtra("weight", weight);
+                saveData(gender,height,weight);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.btn_register_info_sex:
                 gender = "男";
@@ -95,5 +99,12 @@ public class Home_measureActivity extends AppCompatActivity {
                 }
                 break;
         }
+    }
+    private void saveData(String gender,String height,String weight){
+        sp_bodyData=getSharedPreferences("BodyData",MODE_PRIVATE);
+        sp_bodyData.edit().putString("gender",gender).apply();
+        sp_bodyData.edit().putString("height",height).apply();
+        sp_bodyData.edit().putString("weight",weight).apply();
+
     }
 }
