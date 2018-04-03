@@ -13,7 +13,6 @@ public class ShowDataActivity extends AppCompatActivity {
     private String weight;
     private String height;
     private SharedPreferences sp_data;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +20,6 @@ public class ShowDataActivity extends AppCompatActivity {
         getData();
 
     }
-
     private void getData(){
         sp_data=this.getSharedPreferences("BodyData",MODE_PRIVATE);
         gender=this.getIntent().getStringExtra("gender");
