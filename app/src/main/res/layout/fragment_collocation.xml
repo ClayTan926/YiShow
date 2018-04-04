@@ -42,8 +42,9 @@
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/gray_radius"
+        android:src="@drawable/ic_launcher_foreground"
         tools:layout_editor_absoluteX="172dp"
         tools:layout_editor_absoluteY="497dp"
+        android:backgroundTint="@color/backgroundGray"
         tools:ignore="MissingConstraints" />
 </android.support.constraint.ConstraintLayout>
