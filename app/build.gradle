@@ -13,7 +13,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            shrinkResources true
+            //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -44,5 +44,5 @@ dependencies {
     implementation 'com.android.support:percent:27.1.0'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.zkk.view:ZkkRulerView:1.0.0'
-
+    implementation files('libs/EasyAR.jar')
 }

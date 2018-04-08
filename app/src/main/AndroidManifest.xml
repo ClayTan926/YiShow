@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.tzl.yishow">
-
+    <!--照相机-->
+    <uses-permission android:name="android.permission.CAMERA" />
     <!-- 允许联网 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
@@ -69,9 +70,10 @@
 
         <activity android:name=".HotActivity">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <action android:name="cn.tzl.yishow.more"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="cn.tzl.yishow.more" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
         </activity>

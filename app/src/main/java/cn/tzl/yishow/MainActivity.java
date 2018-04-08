@@ -17,6 +17,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.easyar.Engine;
+
 import cn.tzl.yishow.base.BaseActivity;
 
 
@@ -30,7 +32,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     Toolbar mtoolbar;
     //数据源的集合
     private List<Fragment> list = new ArrayList<Fragment>();
-
+    private static final String key="LL7elIxHFblHvmZa9We6zSEB1vzClVHtpOLHU4pgBzKpRFcAKlOOWsFBI2lOHuqExX000s7dKixZGFtFrxE13UEQGJ77xUWHfyQBCD0FrTG3LB9EePZeRv778sX6LQ9omCz0LWkILXN8QMPABwEnzmJq1mgOa7NdNze164k8nJ35ZE1UOgzcTqxQYKNAn14d2GRxJFg3";
     int lastSelectedPosition = 0;
     private String TAG = MainActivity.class.getSimpleName();
     private HomeFragment mHomeFragment;
@@ -44,6 +46,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        Engine.initialize(this, key);
         initBottomNavigationBar();
     }
 
