@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        Engine.initialize(this, key);
+        //Engine.initialize(this, key);
         initBottomNavigationBar();
     }
 

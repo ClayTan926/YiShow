@@ -1,4 +1,4 @@
-package cn.tzl.yishow.module_Login;
+package cn.tzl.yishow;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,11 +11,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.v3.Bmob;
+import cn.tzl.yishow.base.BaseActivity;
 import cn.tzl.yishow.module_Login.model.UserRegister;
-import cn.tzl.yishow.R;
 //import retrofit2.Retrofit;
 
-public class RegisterActivity extends AppCompatActivity  {
+public class RegisterActivity extends BaseActivity {
 
     @BindView(R.id.register_mobile)
     EditText et_Mobile;

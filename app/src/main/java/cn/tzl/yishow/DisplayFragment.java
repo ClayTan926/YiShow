@@ -85,13 +85,13 @@ public class DisplayFragment extends Fragment {
         likeList= new ArrayList<>();
         final String content="大佛核对是否考虑设立付款还是理科粉红色法律是客户分类";
 
-        avatarList.add(R.mipmap.ic_launcher);
-        avatarList.add(R.mipmap.ic_launcher);
-        avatarList.add(R.mipmap.ic_launcher);
+        avatarList.add(R.mipmap.avaterimage);
+        avatarList.add(R.mipmap.avaterimage);
+        avatarList.add(R.mipmap.avaterimage);
 
-        photoList.add(R.mipmap.ic_launcher);
-        photoList.add(R.mipmap.ic_launcher);
-        photoList.add(R.mipmap.ic_launcher);
+        photoList.add(R.mipmap.cloths);
+        photoList.add(R.mipmap.cloths);
+        photoList.add(R.mipmap.cloths);
 
         userList.add("Jack");
         userList.add("Mike");

@@ -1,4 +1,4 @@
-package cn.tzl.yishow.module_Login;
+package cn.tzl.yishow;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,10 +15,10 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.tzl.yishow.base.BaseActivity;
 import cn.tzl.yishow.module_Login.model.UserLogin;
-import cn.tzl.yishow.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     @BindView(R.id.login_mobile)
     EditText et_Moble;
@@ -30,8 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     TextView tv_Forget;
     @BindView(R.id.tv_register)
     TextView tv_Register;
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
+   /* @BindView(R.id.fab)
+    FloatingActionButton fab;*/
     private String Mobile,Password;
 
     @Override
@@ -42,14 +42,14 @@ public class LoginActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+      /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
     }
 
     @OnClick({R.id.btn_login, R.id.tv_forget, R.id.tv_register})

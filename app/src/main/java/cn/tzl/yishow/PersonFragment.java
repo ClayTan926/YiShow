@@ -13,9 +13,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import android.widget.ImageView;
-
-
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -105,6 +102,8 @@ public class PersonFragment extends Fragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_onclick_login:
+                Intent loginIntent=new Intent(view.getContext(), LoginActivity.class);
+                view.getContext().startActivity(loginIntent);
                 break;
             case R.id.tv_myCollection:
                 break;

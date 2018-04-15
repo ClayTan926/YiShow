@@ -15,8 +15,8 @@
     <string name="tab_display">SHOW</string>
     <string name="tab_person">我的</string>
     <string name="hint_login">点击登陆</string>
-    <string name="text_myCollection">我的收藏</string>
-    <string name="text_myCollocation">我的搭配</string>
+    <string name="text_myCollection">我的信息</string>
+    <string name="text_myCollocation">关于0</string>
     <string name="text_helpAndFeedback">帮助与反馈</string>
     <string name="text_setting">设置</string>
     <string name="text_quit">退出</string>
