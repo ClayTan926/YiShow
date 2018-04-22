@@ -8,12 +8,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zkk.view.rulerview.RulerView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobUser;
+import cn.tzl.yishow.module_Login.activity.LoginActivity;
 
 /**
  * Created by Tanzl on 2018/2/23.
@@ -43,9 +46,17 @@ public class Home_measureActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_measure);
-        ButterKnife.bind(this);
-        initView();
+
+            setContentView(R.layout.activity_measure);
+            ButterKnife.bind(this);
+        BmobUser bmobUser = BmobUser.getCurrentUser();
+        if (null!=bmobUser ) {
+            initView();
+        }else {
+            Toast.makeText(this,"未登录，请登陆后使用该功能",Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void initView() {
@@ -80,7 +91,7 @@ public class Home_measureActivity extends AppCompatActivity {
                 intent.putExtra("gender", gender);
                 intent.putExtra("height", height);
                 intent.putExtra("weight", weight);
-                saveData(gender,height,weight);
+                saveData(gender, height, weight);
                 startActivity(intent);
                 finish();
                 break;
@@ -100,11 +111,12 @@ public class Home_measureActivity extends AppCompatActivity {
                 break;
         }
     }
-    private void saveData(String gender,String height,String weight){
-        sp_bodyData=getSharedPreferences("BodyData",MODE_PRIVATE);
-        sp_bodyData.edit().putString("gender",gender).apply();
-        sp_bodyData.edit().putString("height",height).apply();
-        sp_bodyData.edit().putString("weight",weight).apply();
+
+    private void saveData(String gender, String height, String weight) {
+        sp_bodyData = getSharedPreferences("BodyData", MODE_PRIVATE);
+        sp_bodyData.edit().putString("gender", gender).apply();
+        sp_bodyData.edit().putString("height", height).apply();
+        sp_bodyData.edit().putString("weight", weight).apply();
 
     }
 }

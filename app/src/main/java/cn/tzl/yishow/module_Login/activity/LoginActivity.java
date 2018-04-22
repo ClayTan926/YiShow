@@ -1,12 +1,13 @@
-package cn.tzl.yishow;
+package cn.tzl.yishow.module_Login.activity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,10 +16,12 @@ import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.Bmob;
+import cn.tzl.yishow.R;
 import cn.tzl.yishow.base.BaseActivity;
 import cn.tzl.yishow.module_Login.model.UserLogin;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.login_mobile)
     EditText et_Moble;
@@ -37,19 +40,17 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TransparentActionBar();
         setContentView(R.layout.activity_login);
+        //初始化Bmob
+        Bmob.initialize(this, "eeeae81bed48e80d6181bdf350980c64");
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-      /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+        Mobile=this.getIntent().getStringExtra("username");
+        if (Mobile!=null&&"".equals(Mobile)){
+            et_Moble.setText(Mobile);
+        }
     }
 
     @OnClick({R.id.btn_login, R.id.tv_forget, R.id.tv_register})
@@ -67,6 +68,18 @@ public class LoginActivity extends BaseActivity {
                 Intent registerIntent=new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(registerIntent);
                 break;
+        }
+    }
+    private void TransparentActionBar(){
+        ActionBar actionBar=getSupportActionBar();
+        if (actionBar!=null){
+            actionBar.hide();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
     }
 }

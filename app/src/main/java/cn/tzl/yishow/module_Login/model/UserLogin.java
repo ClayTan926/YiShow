@@ -9,16 +9,17 @@ import android.widget.Toast;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SaveListener;
 import cn.tzl.yishow.MainActivity;
 import cn.tzl.yishow.module_Login.bean.User;
 
-/**
- * Created by Administrator on 2017/11/25 0025.
- */
+
 
 public class UserLogin {
+    private static final String TAG = "UserLogin";
     /**
      * @author tzl
      * @param context 上下文
@@ -26,7 +27,26 @@ public class UserLogin {
      * @param Password 密码
      */
     public static void userLogin(final Context context, String Mobile, final String Password ){
-        BmobQuery<User> query = new BmobQuery<User>();
+        BmobUser loginUser=new BmobUser();
+        loginUser.setUsername(Mobile);
+        loginUser.setPassword(Password);
+        loginUser.login(new SaveListener<BmobUser>() {
+            @Override
+            public void done(BmobUser bmobUser, BmobException e) {
+                if(e==null){
+                    Toast.makeText(context,"登录成功:",Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(context,MainActivity.class);
+                    context.startActivity(intent);
+                    ((Activity)context).finish();
+                    //通过BmobUser user = BmobUser.getCurrentUser()获取登录成功后的本地用户信息
+                    //如果是自定义用户对象MyUser，可通过MyUser user = BmobUser.getCurrentUser(MyUser.class)获取自定义用户信息
+                }else{
+                    Log.e(TAG, "BmobException: "+e );
+                }
+            }
+        });
+
+      /*  BmobQuery<User> query = new BmobQuery<User>();
         //查询是否有对应手机号
         query.addWhereEqualTo("mobile",Mobile);
         //返回一条数据
@@ -52,7 +72,7 @@ public class UserLogin {
                     Log.i("bmob","失败："+e.getMessage()+","+e.getErrorCode());
                 }
             }
-        });
+        });*/
 
     }
 }

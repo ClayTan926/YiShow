@@ -14,12 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import javax.security.auth.login.LoginException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobUser;
+import cn.tzl.yishow.module_Login.activity.LoginActivity;
 import cn.tzl.yishow.utils.ActivityCollector;
 import cn.tzl.yishow.view.AvatarImageView;
-
 
 
 /**
@@ -29,7 +32,7 @@ import cn.tzl.yishow.view.AvatarImageView;
 public class PersonFragment extends Fragment {
 
     private static final String TAG = "PersonFragment";
-
+    private BmobUser bmobUser;
     @BindView(R.id.headportrait)
     AvatarImageView avatarImageView;
    /* @BindView(R.id.image)
@@ -78,7 +81,17 @@ public class PersonFragment extends Fragment {
                 Toast.makeText(view.getContext(), "设置新的头像成功", Toast.LENGTH_SHORT).show();
             }
         });
+        bmobUser = BmobUser.getCurrentUser();
+
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (bmobUser != null) {
+            tvOnclickLogin.setText(bmobUser.getUsername());
+        }
     }
 
     @Override
@@ -102,20 +115,28 @@ public class PersonFragment extends Fragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_onclick_login:
-                Intent loginIntent=new Intent(view.getContext(), LoginActivity.class);
-                view.getContext().startActivity(loginIntent);
+                if (bmobUser == null) {
+                    Intent loginIntent = new Intent(view.getContext(), LoginActivity.class);
+                    view.getContext().startActivity(loginIntent);
+                }
                 break;
             case R.id.tv_myCollection:
+                Intent userIntent = new Intent(view.getContext(), UserInfoActivity.class);
+                view.getContext().startActivity(userIntent);
                 break;
             case R.id.tv_helpAndFeedback:
-                Intent helpIntent=new Intent(view.getContext(),HelpActivity.class);
+                Intent helpIntent = new Intent(view.getContext(), HelpActivity.class);
                 view.getContext().startActivity(helpIntent);
                 break;
             case R.id.tv_setting:
-
                 break;
             case R.id.tv_quit:
+                BmobUser.logOut();   //清除缓存用户对象
+                Log.e(TAG, "onViewClicked:  用户注销");
+                //BmobUser currentUser = BmobUser.getCurrentUser(); // 现在的currentUser是null了
                 ActivityCollector.finishAll();
+                Intent loginIntent = new Intent(view.getContext(), LoginActivity.class);
+                view.getContext().startActivity(loginIntent);
                 break;
         }
     }

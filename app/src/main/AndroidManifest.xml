@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.tzl.yishow">
-    <!--照相机-->
+
+    <!-- 照相机 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- 允许联网 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,38 +19,27 @@
     <!-- 允许读取手机状态 用于创建BmobInstallation -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/cover"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/cover"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name="base.BaseActivity">
-
-        </activity>
-        <activity android:name=".HelpActivity">
-
-        </activity>
+        <activity android:name="base.BaseActivity"></activity>
+        <activity android:name=".HelpActivity"></activity>
         <activity
-            android:name=".RegisterActivity"
-            android:launchMode="singleTask">
-
-        </activity>
+            android:name=".module_Login.activity.RegisterActivity"
+            android:launchMode="singleTask"></activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".module_Login.activity.LoginActivity"
             android:label="@string/title_activity_login"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Home_todayPushActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask">
@@ -61,13 +51,8 @@
         </activity>
         <activity
             android:name=".Home_measureActivity"
-            android:launchMode="singleTask">
-
-        </activity>
-        <activity android:name=".ShowDataActivity">
-
-        </activity>
-
+            android:launchMode="singleTask"></activity>
+        <activity android:name=".ShowDataActivity"></activity>
         <activity android:name=".HotActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -75,9 +60,8 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
-
+        <activity android:name=".UserInfoActivity"></activity>
     </application>
 
 </manifest>

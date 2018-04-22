@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 
+import cn.bmob.v3.Bmob;
 import cn.tzl.yishow.utils.ActivityCollector;
 
 
@@ -22,6 +23,8 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityCollector.addActivity(this);
+        //初始化Bmob
+        Bmob.initialize(this, "eeeae81bed48e80d6181bdf350980c64");
         TransparentActionBar();
     }
 

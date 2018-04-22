@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/myblack">
+    android:orientation="vertical"
+    android:background="@drawable/bg_gray">
 
 
-    <android.support.v7.widget.CardView
+   <!-- <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="150dp"
         android:layout_gravity="center|top"
         android:layout_marginEnd="28dp"
         android:layout_marginStart="28dp"
-        app:cardCornerRadius="10dp"
-        android:layout_alignParentTop="true"
-        android:layout_margin="65dp">
+        android:layout_marginTop="52dp"
+        app:cardCornerRadius="10dp">-->
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center|top"
+            android:layout_marginEnd="28dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="52dp"
             android:orientation="vertical">
 
             <cn.tzl.yishow.view.AvatarImageView
                 android:id="@+id/headportrait"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginEnd="8dp"
                 android:src="@mipmap/avaterimage"
@@ -50,20 +54,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="18dp"
                 android:text="@string/hint_login"
-                android:textColor="@color/myblack"
+                android:textColor="@color/hint_gray"
                 android:textSize="16sp"
                 />
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+  <!--  </android.support.v7.widget.CardView>-->
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="12dp"
         android:background="@color/mywhite"
         android:orientation="vertical"
         android:padding="25dp"
@@ -73,7 +75,6 @@
             android:id="@+id/tv_myCollection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_marginBottom="5dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
@@ -88,12 +89,15 @@
             tools:layout_editor_absoluteX="27dp"
             tools:layout_editor_absoluteY="41dp" />
 
+
+
         <TextView
+            android:id="@+id/tv_helpAndFeedback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_margin="5dp"
-            android:text="@string/text_myCollocation"
+            android:text="@string/text_helpAndFeedback"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -103,14 +107,12 @@
             android:background="@color/mygray"
             tools:layout_editor_absoluteX="27dp"
             tools:layout_editor_absoluteY="41dp" />
-
         <TextView
-            android:id="@+id/tv_helpAndFeedback"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_margin="5dp"
-            android:text="@string/text_helpAndFeedback"
+            android:text="@string/text_myCollocation"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -149,4 +151,4 @@
             android:textStyle="bold" />
 
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
