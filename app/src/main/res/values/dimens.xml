@@ -1,4 +1,8 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="fontSizeM">18sp</dimen>
+    <dimen name="fontSizeL">20sp</dimen>
+    <dimen name="fontSizeS">16sp</dimen>
+    <dimen name="fontSizeXL">24sp</dimen>
 </resources>

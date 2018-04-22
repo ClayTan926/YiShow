@@ -2,10 +2,13 @@ package cn.tzl.yishow;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,23 +41,23 @@ public class Home_measureActivity extends AppCompatActivity {
     @BindView(R.id.btn_measure_next)
     Button btnMeasureNext;
     private Boolean sex = true;
-    private String gender;
-    private String weight;
-    private String height;
+    private String gender="男";
+    private String weight="55";
+    private String height="170";
     private SharedPreferences sp_bodyData;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-            setContentView(R.layout.activity_measure);
-            ButterKnife.bind(this);
+        TransparentActionBar();
+        setContentView(R.layout.activity_measure);
+        ButterKnife.bind(this);
         BmobUser bmobUser = BmobUser.getCurrentUser();
-        if (null!=bmobUser ) {
+        if (null != bmobUser) {
             initView();
-        }else {
-            Toast.makeText(this,"未登录，请登陆后使用该功能",Toast.LENGTH_SHORT).show();
-            Intent intent=new Intent(this, LoginActivity.class);
+        } else {
+            Toast.makeText(this, "未登录，请登陆后使用该功能", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }
     }
@@ -83,6 +86,18 @@ public class Home_measureActivity extends AppCompatActivity {
         rulerWeight.setValue(55, 20, 200, 0.1f);
     }
 
+    private void TransparentActionBar(){
+        ActionBar actionBar=getSupportActionBar();
+        if (actionBar!=null){
+            actionBar.hide();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+    }
     @OnClick({R.id.btn_measure_next, R.id.btn_register_info_sex})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -96,7 +111,6 @@ public class Home_measureActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.btn_register_info_sex:
-                gender = "男";
                 if (!sex) {
                     view.setBackgroundResource(R.drawable.user_sex_switch_boy);
                     sex = true;
