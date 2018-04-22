@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_gray"
+    tools:context="cn.tzl.yishow.UserInfoActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/todaytoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/myblack"
+            android:minHeight="?attr/actionBarSize"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="个人信息"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="25dp">
+
+        <cn.tzl.yishow.view.CircleImageView
+            android:id="@+id/iv_AvatarView"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/avaterimage"
+            app:civ_border_color="@color/gray"
+            app:civ_border_width="1dp" />
+
+        <TextView
+            android:id="@+id/tv_hint_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_AvatarView"
+            android:gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="用户名:"
+            android:textColor="@color/gray"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_hint_user"
+            android:layout_marginStart="48dp"
+            android:layout_toEndOf="@+id/tv_hint_user"
+            android:textColor="@color/gray"
+            android:background="@null" />
+
+        <TextView
+            android:id="@+id/tv_hint_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_hint_user"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="手机号:"
+            android:textColor="@color/gray"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_mobile"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/et_username"
+            android:layout_alignTop="@+id/tv_hint_mobile"
+            android:textColor="@color/gray"
+            android:background="@null" />
+
+        <TextView
+            android:id="@+id/tv_hint_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_hint_mobile"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="邮箱:"
+            android:textColor="@color/gray"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/et_mail"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tv_hint_mail"
+            android:layout_alignBottom="@+id/tv_hint_mail"
+            android:layout_alignStart="@+id/et_mobile"
+            android:textColor="@color/gray"
+            android:background="@null" />
+
+        <LinearLayout
+            android:id="@+id/ll_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/et_mail"
+            android:background="@color/gray"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_hint_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/ll_line"
+            android:layout_marginTop="8dp"
+            android:text="修改密码(不设置，则留空)"
+            android:textColor="@color/gray"/>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/ti_oldPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@+id/tv_hint_pwd">
+        <EditText
+            android:id="@+id/et_oldPwd"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:hint="请输入旧密码"
+            android:textColor="@color/gray"
+            android:maxLines="1"
+            android:textSize="15sp" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/ti_newPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@+id/ti_oldPwd">
+        <EditText
+            android:id="@+id/et_newPwd"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:textColor="@color/gray"
+            android:background="@null"
+            android:hint="请输入新密码"
+            android:maxLines="1"
+            android:textSize="15sp" />
+    </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/ti_confirmPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_below="@+id/ti_newPwd">
+
+            <EditText
+                android:id="@+id/et_confirmPwd"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:hint="请输入再次新密码"
+                android:textColor="@color/gray"
+                android:maxLines="1"
+                android:textSize="15sp" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.v7.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ti_confirmPwd"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center|bottom"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="10dp">
+
+            <Button
+                android:id="@+id/btn_save_user_info"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:background="@color/loginbutton"
+                android:text="保存"
+                android:textSize="18sp" />
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+
+</LinearLayout>
