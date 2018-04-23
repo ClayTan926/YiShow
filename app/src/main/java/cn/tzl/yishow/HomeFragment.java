@@ -88,7 +88,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.frag_home, container, false);
         View headerView = inflater.inflate(R.layout.header_home, container, false);
         ButterKnife.bind(this, view);
 

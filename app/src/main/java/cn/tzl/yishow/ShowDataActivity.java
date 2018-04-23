@@ -1,5 +1,6 @@
 package cn.tzl.yishow;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -33,6 +35,8 @@ public class ShowDataActivity extends AppCompatActivity {
     TextView tvShape3;
     @BindView(R.id.tv_shape4)
     TextView tvShape4;
+    @BindView(R.id.iv_show_back)
+    ImageView ivBack;
     private String gender;
     private String weight;
     private String height;
@@ -43,7 +47,7 @@ public class ShowDataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TransparentActionBar();
-        setContentView(R.layout.activity_show_data);
+        setContentView(R.layout.act_show_data);
         ButterKnife.bind(this);
         getData();
 
@@ -67,7 +71,7 @@ public class ShowDataActivity extends AppCompatActivity {
         gender = this.getIntent().getStringExtra("gender");
         weight = this.getIntent().getStringExtra("weight");
         height = this.getIntent().getStringExtra("height");
-        if (gender.equals("") && gender != null) {
+        if ( gender == null||gender.equals("")) {
             gender = sp_data.getString("gender", "男");
             height = sp_data.getString("height", "165");
             weight = sp_data.getString("weight", "55");
@@ -97,9 +101,9 @@ public class ShowDataActivity extends AppCompatActivity {
 
     private String calculateBMI(float height, float weight) {
         if (height != 0 && weight != 0) {
-            bmi = weight / (height * height/10000);
+            bmi = weight / (height * height / 10000);
         }
-        return String.format("%.1f",bmi);
+        return String.format("%.1f", bmi);
     }
 
     private int checkBMI(float bmi) {
@@ -114,12 +118,18 @@ public class ShowDataActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.iv_show_return, R.id.change})
+    @OnClick({R.id.change, R.id.iv_show_back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_show_return:
+            case R.id.iv_show_back:
+                finish();
                 break;
             case R.id.change:
+                SharedPreferences.Editor sp=getSharedPreferences("BodyData", MODE_PRIVATE).edit();
+                sp.clear().apply();//清楚保存的数据
+                Intent intent=new Intent(this,Home_measureActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
     }

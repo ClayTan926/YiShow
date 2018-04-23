@@ -10,7 +10,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.tzl.yishow.R;
 import cn.tzl.yishow.adapter.CollocationAdapter;
 
 /**
@@ -29,7 +28,7 @@ public class HotActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_collocation);
+        setContentView(R.layout.frag_collocation);
         ButterKnife.bind(this);
         initView();
     }

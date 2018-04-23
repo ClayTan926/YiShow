@@ -43,7 +43,7 @@ public class Cate_ContentFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_category_content, container, false);
+        View view = inflater.inflate(R.layout.frag_category_content, container, false);
         ButterKnife.bind(this,view);
         //得到数据
         str = getArguments().getString(TAG);

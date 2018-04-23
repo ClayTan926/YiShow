@@ -1,10 +1,13 @@
 package cn.tzl.yishow;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,7 +37,8 @@ public class Home_todayPushActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_todaypush);
+        TransparentActionBar();
+        setContentView(R.layout.act_todaypush);
         ButterKnife.bind(this);
         oneFrag = new PushOneFragment();
         twoFrag = new PushTwoFragment();
@@ -63,5 +67,18 @@ public class Home_todayPushActivity extends AppCompatActivity {
         Intent intent=new Intent("cn.tzl.yishow.more");
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    private void TransparentActionBar(){
+        ActionBar actionBar=getSupportActionBar();
+        if (actionBar!=null){
+            actionBar.hide();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
     }
 }

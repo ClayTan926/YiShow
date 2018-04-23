@@ -52,7 +52,7 @@ public class CategoryFragment extends Fragment  {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_category, container, false);
+        View view = inflater.inflate(R.layout.frag_category, container, false);
         ButterKnife.bind(this,view);
         initView(view.getContext());
         return view;

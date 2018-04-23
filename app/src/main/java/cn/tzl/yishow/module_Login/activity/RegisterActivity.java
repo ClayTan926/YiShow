@@ -17,7 +17,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.v3.Bmob;
 import cn.tzl.yishow.R;
-import cn.tzl.yishow.base.BaseActivity;
 import cn.tzl.yishow.module_Login.model.UserRegister;
 //import retrofit2.Retrofit;
 
@@ -38,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TransparentActionBar();
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.act_register);
 //初始化Bmob
         Bmob.initialize(this, "eeeae81bed48e80d6181bdf350980c64");
         /**

@@ -17,7 +17,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.easyar.Engine;
 
 import cn.tzl.yishow.base.BaseActivity;
 
@@ -44,7 +43,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.act_main);
         ButterKnife.bind(this);
         //Engine.initialize(this, key);
         initBottomNavigationBar();

@@ -14,8 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import javax.security.auth.login.LoginException;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -72,7 +70,7 @@ public class PersonFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_person, container, false);
+        final View view = inflater.inflate(R.layout.frag_person, container, false);
         ButterKnife.bind(this, view);
         avatarImageView.setAfterCropListener(new AvatarImageView.AfterCropListener() {
             @Override

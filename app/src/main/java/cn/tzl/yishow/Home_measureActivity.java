@@ -50,7 +50,7 @@ public class Home_measureActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TransparentActionBar();
-        setContentView(R.layout.activity_measure);
+        setContentView(R.layout.act_measure);
         ButterKnife.bind(this);
         BmobUser bmobUser = BmobUser.getCurrentUser();
         if (null != bmobUser) {
@@ -58,12 +58,14 @@ public class Home_measureActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "未登录，请登陆后使用该功能", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,0);
+            finish();
         }
+        checkData();
     }
 
     private void initView() {
-
+        sp_bodyData = getSharedPreferences("BodyData", MODE_PRIVATE);
         rulerHeight.setOnValueChangeListener(new RulerView.OnValueChangeListener() {
             @Override
             public void onValueChange(float value) {
@@ -98,9 +100,12 @@ public class Home_measureActivity extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
     }
-    @OnClick({R.id.btn_measure_next, R.id.btn_register_info_sex})
+    @OnClick({R.id.btn_measure_next, R.id.btn_register_info_sex,R.id.iv_measure_back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.iv_measure_back:
+                finish();
+                break;
             case R.id.btn_measure_next:
                 Intent intent = new Intent(Home_measureActivity.this, ShowDataActivity.class);
                 intent.putExtra("gender", gender);
@@ -120,17 +125,26 @@ public class Home_measureActivity extends AppCompatActivity {
                     sex = false;
                     view.setBackgroundResource(R.drawable.user_sex_switch_girl);
                     gender = "女";
-                    Log.e("Measure", "gril");
+                    Log.e("Measure", "girl");
                 }
                 break;
         }
     }
 
     private void saveData(String gender, String height, String weight) {
-        sp_bodyData = getSharedPreferences("BodyData", MODE_PRIVATE);
+
         sp_bodyData.edit().putString("gender", gender).apply();
         sp_bodyData.edit().putString("height", height).apply();
         sp_bodyData.edit().putString("weight", weight).apply();
 
     }
+
+    private void checkData(){
+        if (sp_bodyData!=null){
+            Intent intent=new Intent(this,ShowDataActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
 }

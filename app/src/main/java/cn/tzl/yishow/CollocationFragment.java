@@ -41,7 +41,7 @@ public class CollocationFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_collocation, container, false);
+        View view = inflater.inflate(R.layout.frag_collocation, container, false);
         ButterKnife.bind(this,view);
         initView();
         return view;
