@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
@@ -51,8 +52,9 @@ public class WelcomeActivity extends AppCompatActivity {
         Log.e(TAG, "initView: welcome" );
         hintTime.setText(now.split(" ")[0]);
         ImageView imageView = (ImageView) findViewById(R.id.iv_welcome);
-       /* RequestOptions options = new RequestOptions()
-                .placeholder(R.drawable.ic_launcher_background);*/
+        RequestOptions options = new RequestOptions()
+                //.diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .placeholder(R.drawable.ic_launcher_background);
         Glide.with(this)
                 .load(R.drawable.load)
                 .listener(new RequestListener<Drawable>() {

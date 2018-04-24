@@ -1,8 +1,9 @@
 package cn.tzl.yishow;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.tzl.yishow.adapter.CollocationAdapter;
 
 /**
@@ -20,19 +22,13 @@ import cn.tzl.yishow.adapter.CollocationAdapter;
  */
 
 public class CollocationFragment extends Fragment {
-   /* @BindView(R.id.rv_collocation)
-    RecyclerView collocationReView;*/
+    /* @BindView(R.id.rv_collocation)
+     RecyclerView collocationReView;*/
     CollocationAdapter collocationAdapter;
-    private List<Integer> imagelist;
-    private List<String> textlist;
-    private List<String> numlist;
-    public static CollocationFragment newInstance(String param1) {
-        CollocationFragment fragment = new CollocationFragment();
-        /*Bundle args = new Bundle();
-        args.putString("agrs1", param1);
-        fragment.setArguments(args);*/
-        return fragment;
-    }
+    @BindView(R.id.rv_clothesBar)
+    RecyclerView rvClothesBar;
+    @BindView(R.id.fab_add)
+    FloatingActionButton fabAdd;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,43 +38,38 @@ public class CollocationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_clothesbar, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         //initView();
         return view;
     }
 
 
-    private void initView(){
-        imagelist=new ArrayList<>();
-        textlist=new ArrayList<>();
-        numlist=new ArrayList<>();
-
-        imagelist.add(R.mipmap.cloths);
-        imagelist.add(R.mipmap.home);
-        imagelist.add(R.mipmap.category);
-
-        textlist.add("当即热门男装1");
-        textlist.add("当即热门男装2");
-        textlist.add("当即热门男装3");
-        for (int i=0;i<imagelist.size();i++) {
-            getRandomnum(numlist);
-        }
-        collocationAdapter=new CollocationAdapter(imagelist,textlist,numlist);
-        //collocationReView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        //collocationReView.setAdapter(collocationAdapter);
-    }
-
-    private void getRandomnum(List<String> list){
-        int num=(int)(Math.random()*1000);
-        list.add(""+num);
+    private void initView() {
 
     }
+
+
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-       /* imagelist.clear();
-        textlist.clear();
-        numlist.clear();*/
+
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @OnClick({R.id.rv_clothesBar, R.id.fab_add})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rv_clothesBar:
+                break;
+            case R.id.fab_add:
+                //调用AR SDK
+
+                break;
+        }
     }
 }
