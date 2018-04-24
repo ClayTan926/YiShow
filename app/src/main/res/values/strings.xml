@@ -35,6 +35,6 @@
     <string name="measure_weight">体重(kg)</string>
     <string name="measure_next">下一步</string>
     <string name="todayPush_more">更多推荐</string>
-
+    <string name="clothesBar_title">搭配</string>
 
 </resources>

@@ -39,7 +39,7 @@ public class Home_measureActivity extends AppCompatActivity {
     @BindView(R.id.ruler_weight)
     RulerView rulerWeight;
     @BindView(R.id.btn_measure_next)
-    Button btnMeasureNext;
+    TextView tvMeasureNext;
     private Boolean sex = true;
     private String gender="男";
     private String weight="55";
@@ -140,7 +140,7 @@ public class Home_measureActivity extends AppCompatActivity {
     }
 
     private void checkData(){
-        if (sp_bodyData!=null){
+        if (!sp_bodyData.getString("height","").equals("")){
             Intent intent=new Intent(this,ShowDataActivity.class);
             startActivity(intent);
             finish();

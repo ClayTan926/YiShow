@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Intent;
 
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -76,6 +77,7 @@ public class PersonFragment extends Fragment {
             @Override
             public void afterCrop(Bitmap photo) {
                 Log.e(TAG, "设置成功");
+                //avatarImageView.setImageBitmap(photo);
                 Toast.makeText(view.getContext(), "设置新的头像成功", Toast.LENGTH_SHORT).show();
             }
         });

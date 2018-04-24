@@ -71,7 +71,7 @@ public class ShowDataActivity extends AppCompatActivity {
         gender = this.getIntent().getStringExtra("gender");
         weight = this.getIntent().getStringExtra("weight");
         height = this.getIntent().getStringExtra("height");
-        if ( gender == null||gender.equals("")) {
+        if (gender == null || gender.equals("")) {
             gender = sp_data.getString("gender", "男");
             height = sp_data.getString("height", "165");
             weight = sp_data.getString("weight", "55");
@@ -125,9 +125,8 @@ public class ShowDataActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.change:
-                SharedPreferences.Editor sp=getSharedPreferences("BodyData", MODE_PRIVATE).edit();
-                sp.clear().apply();//清楚保存的数据
-                Intent intent=new Intent(this,Home_measureActivity.class);
+                sp_data.edit().clear().apply();//清除保存的数据
+                Intent intent = new Intent(this, Home_measureActivity.class);
                 startActivity(intent);
                 finish();
                 break;

@@ -9,7 +9,7 @@
     <com.youth.banner.Banner
         android:id="@+id/home_banner"
         android:layout_width="match_parent"
-        android:layout_height="180dp">
+        android:layout_height="220dp">
     </com.youth.banner.Banner>
 
     <LinearLayout
@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1">
-        <Button
+        <TextView
             android:id="@+id/btn_home_measure"
             android:layout_width="match_parent"
             android:layout_height="78dp"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1">
-        <Button
+        <TextView
             android:id="@+id/btn_home_todayPush"
 
             android:layout_width="match_parent"

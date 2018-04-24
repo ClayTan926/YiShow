@@ -1,5 +1,6 @@
 package cn.tzl.yishow.view;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -27,6 +28,7 @@ import android.provider.MediaStore;
 import android.support.v7.widget.AppCompatImageView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -39,10 +41,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mylhyl.acp.Acp;
+import com.mylhyl.acp.AcpListener;
+import com.mylhyl.acp.AcpOptions;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+
 
 /**
  * Created by Administrator on 2017/12/27 0027.
@@ -271,25 +279,49 @@ public class AvatarImageView extends android.support.v7.widget.AppCompatImageVie
         super.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                avatarDialog = new AvatarDialog(AvatarImageView.this.mContext);
-                avatarDialog.setCancelable(true);
-                avatarDialog.setPositiveListener(new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        startActionCamera(picUri);
-                        avatarDialog.dismiss();
+
+                //动态获取权限，如果没有权限，则提示
+                Acp.getInstance(mContext).request(new AcpOptions.Builder().setPermissions(
+                        Manifest.permission.WRITE_SETTINGS
+                        , Manifest.permission.CAMERA
+                        ,Manifest.permission.READ_EXTERNAL_STORAGE
+                        ,Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        )
+                        .build(), new AcpListener() {
+                    @Override
+                    public void onGranted() {
+                       /* Uri u = Uri.parse("tel:" + phoneNumber);
+                        Intent it = new Intent(Intent.ACTION_CALL, u);
+                        context.startActivity(it);*/
+                        avatarDialog = new AvatarDialog(AvatarImageView.this.mContext);
+                        avatarDialog.setCancelable(true);
+                        avatarDialog.setPositiveListener(new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                startActionCamera(picUri);
+                                avatarDialog.dismiss();
+                            }
+                        });
+                        avatarDialog.setNegativeListener(new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                startActionPickCrop();
+                                avatarDialog.dismiss();
+                            }
+                        });
+
+                        //设置样式的属性
+                        setDialogAttr();
+
+                        avatarDialog.show();
                     }
-                });
-                avatarDialog.setNegativeListener(new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        startActionPickCrop();
-                        avatarDialog.dismiss();
+
+
+                    @Override
+                    public void onDenied(List<String> permissions) {
+                        Toast.makeText(mContext, "授权失败", Toast.LENGTH_SHORT).show();
                     }
                 });
 
-                //设置样式的属性
-                setDialogAttr();
 
-                avatarDialog.show();
             }
         });
     }
@@ -346,7 +378,9 @@ public class AvatarImageView extends android.support.v7.widget.AppCompatImageVie
         intent.putExtra(MediaStore.EXTRA_OUTPUT, output);
         ((Activity) this.mContext).startActivityForResult(intent,
                 AvatarImageView.REQUEST_IMAGE_BY_CAMERA);
+
     }
+
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {

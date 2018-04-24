@@ -13,7 +13,8 @@
             android:id="@+id/toolbar_measure"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
+            android:paddingTop="30dp"
+            android:paddingBottom="20dp"
             android:background="@color/myblack">
             <ImageView
                 android:id="@+id/iv_measure_back"
@@ -21,11 +22,14 @@
                 android:layout_height="32dp"
                 android:src="@drawable/icon_white_back"/>
 
-            <Button
+            <TextView
                 android:id="@+id/btn_measure_next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/fontSizeM"
+                android:paddingRight="20dp"
                 android:text="@string/measure_next" />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>

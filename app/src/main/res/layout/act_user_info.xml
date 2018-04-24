@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:background="@color/myblack"
             android:orientation="horizontal"
-            android:paddingTop="20dp">
+            android:padding="20dp">
 
             <ImageView
                 android:id="@+id/iv_user_back"

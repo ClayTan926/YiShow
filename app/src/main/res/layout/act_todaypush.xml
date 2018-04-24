@@ -10,23 +10,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/todaytoolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@color/myblack"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/todaytoolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/actionbar_todayPush"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#ffffff"/>
-    </android.support.v7.widget.Toolbar>
+            android:background="@color/myblack"
+            android:minHeight="?attr/actionBarSize"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp">
+
+            <ImageView
+                android:id="@+id/iv_todayPush_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_white_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/actionbar_todayPush"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
     <TextView
         android:id="@+id/tv_todayPush_More"

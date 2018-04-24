@@ -55,7 +55,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
         bottomNavigationBar.addItem(new BottomNavigationItem(R.mipmap.home, getApplicationContext().getString(R.string.tab_home)).setActiveColor(R.color.myblack))
-                .addItem(new BottomNavigationItem(R.mipmap.category, getApplicationContext().getString(R.string.tab_category)).setActiveColor(R.color.myblack))
+                //.addItem(new BottomNavigationItem(R.mipmap.category, getApplicationContext().getString(R.string.tab_category)).setActiveColor(R.color.myblack))
                 .addItem(new BottomNavigationItem(R.mipmap.collocation, getApplicationContext().getString(R.string.tab_collocation)).setActiveColor(R.color.myblack))
                 .addItem(new BottomNavigationItem(R.mipmap.display, getApplicationContext().getString(R.string.tab_display)).setActiveColor(R.color.myblack))
                 .addItem(new BottomNavigationItem(R.mipmap.person, getApplicationContext().getString(R.string.tab_person)).setActiveColor(R.color.myblack))
@@ -77,25 +77,6 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         transaction.commit();
     }
 
-    private void initActionBar(int position){
-        mtoolbar=findViewById(R.id.toolbar);
-        ToolbarHelper.addMiddleTitle(getApplicationContext(),"分类",mtoolbar);
-        String actionBarTitle=null;
-        switch (position){
-            case 1:
-                actionBarTitle="分类";
-                break;
-            case 2:
-                actionBarTitle="推荐搭配";
-                break;
-            case 3:
-                actionBarTitle="秀场";
-                break;
-        }
-        Log.e(TAG, "initActionBar: "+mtoolbar.getResources());
-        ToolbarHelper.addMiddleTitle(getApplicationContext(),actionBarTitle,mtoolbar);
-        setSupportActionBar(mtoolbar);
-    }
 
     /**
      * Tab点击处理
@@ -113,25 +94,25 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                 }
                 transaction.replace(R.id.tb, mHomeFragment);
                 break;
-            case 1:
+            case 4:
                 if (mCategoryFragment == null) {
                     mCategoryFragment = CategoryFragment.newInstance(getApplicationContext().getString(R.string.tab_category));
                 }
                 transaction.replace(R.id.tb, mCategoryFragment);
                 break;
-            case 2:
+            case 1:
                 if (mCollocationFragment == null) {
                     mCollocationFragment = CollocationFragment.newInstance(getApplicationContext().getString(R.string.tab_collocation));
                 }
                 transaction.replace(R.id.tb, mCollocationFragment);
                 break;
-            case 3:
+            case 2:
                 if (mDisplayFragment == null) {
                     mDisplayFragment = DisplayFragment.newInstance(getApplicationContext().getString(R.string.tab_display));
                 }
                 transaction.replace(R.id.tb, mDisplayFragment);
                 break;
-            case 4:
+            case 3:
                 if (mPersonFragment == null) {
                     mPersonFragment = PersonFragment.newInstance(getApplicationContext().getString(R.string.tab_person));
                 }

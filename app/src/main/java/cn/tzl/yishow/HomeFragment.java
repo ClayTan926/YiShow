@@ -53,9 +53,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     //@BindView(R.id.home_banner)
     Banner banner;
     //@BindView(R.id.btn_home_measure)
-    Button btn_measure;
+    TextView btn_measure;
     //@BindView(R.id.btn_home_todayPush)
-    Button btn_todyPush;
+    TextView btn_todyPush;
 
     //@BindView(R.id.btn_home_show)
     Button btn_show;
@@ -145,12 +145,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         homeRecyclerview.setLScrollListener(new LRecyclerView.LScrollListener() {
             @Override
             public void onScrollUp() {
-                Log.e(TAG, "onScrollUp: ");
             }
 
             @Override
             public void onScrollDown() {
-                Log.e(TAG, "onScrollDown: ");
             }
 
             @Override
@@ -164,13 +162,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     //toolbar_home.setVisibility(View.GONE);
                 }
 
-                Log.e(TAG, "onScrolled: dx:" + distanceX + " dy:" + distanceY);
             }
 
             @Override
             public void onScrollStateChanged(int state) {
 
-                Log.e(TAG, "onScrollStateChanged: " + state);
             }
         });
         mLRecyclerViewAdapter.addHeaderView(headerView);
@@ -200,12 +196,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_home_measure:
-                Log.e(TAG, "onClick: 按键1");
                 Intent measureIntent = new Intent(view.getContext(), Home_measureActivity.class);
                 startActivity(measureIntent);
                 break;
             case R.id.btn_home_todayPush:
-                Log.e(TAG, "onClick: 按键2");
                 Intent todayPushIntent = new Intent(view.getContext(), Home_todayPushActivity.class);
                 startActivity(todayPushIntent);
                 break;

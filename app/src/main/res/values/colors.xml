@@ -15,5 +15,6 @@
     <color name="black">#000000</color>
     <color name="hint_gray">#6b6a6a</color>
     <color name="bg_black">#202020</color>
+    <color name="transparent">#00000000</color>
 
 </resources>

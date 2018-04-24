@@ -20,8 +20,8 @@ import cn.tzl.yishow.adapter.CollocationAdapter;
  */
 
 public class CollocationFragment extends Fragment {
-    @BindView(R.id.rv_collocation)
-    RecyclerView collocationReView;
+   /* @BindView(R.id.rv_collocation)
+    RecyclerView collocationReView;*/
     CollocationAdapter collocationAdapter;
     private List<Integer> imagelist;
     private List<String> textlist;
@@ -41,9 +41,9 @@ public class CollocationFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_collocation, container, false);
+        View view = inflater.inflate(R.layout.frag_clothesbar, container, false);
         ButterKnife.bind(this,view);
-        initView();
+        //initView();
         return view;
     }
 
@@ -64,8 +64,8 @@ public class CollocationFragment extends Fragment {
             getRandomnum(numlist);
         }
         collocationAdapter=new CollocationAdapter(imagelist,textlist,numlist);
-        collocationReView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        collocationReView.setAdapter(collocationAdapter);
+        //collocationReView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+        //collocationReView.setAdapter(collocationAdapter);
     }
 
     private void getRandomnum(List<String> list){
@@ -77,8 +77,8 @@ public class CollocationFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        imagelist.clear();
+       /* imagelist.clear();
         textlist.clear();
-        numlist.clear();
+        numlist.clear();*/
     }
 }
