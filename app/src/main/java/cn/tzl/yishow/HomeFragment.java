@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.tzl.yishow.adapter.HomeAdapter;
 import cn.tzl.yishow.animation.ToolbarAnimation;
+import cn.tzl.yishow.module_Measure.Home_measureActivity;
 import cn.tzl.yishow.utils.GlideImageLoader;
 
 /**

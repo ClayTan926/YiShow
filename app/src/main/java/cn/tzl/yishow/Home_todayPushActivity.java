@@ -17,6 +17,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.tzl.yishow.adapter.FragAdapter;
+import cn.tzl.yishow.module_Push.PushOneFragment;
+import cn.tzl.yishow.module_Push.PushTwoFragment;
 
 
 /**

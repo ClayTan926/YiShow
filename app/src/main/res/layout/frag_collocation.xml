@@ -56,7 +56,6 @@
         app:pressedTranslationZ="@dimen/activity_horizontal_margin"
         app:rippleColor="@color/gray"
         app:useCompatPadding="true"
-        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="140dp"
         tools:layout_editor_absoluteY="415dp" />
 </android.support.constraint.ConstraintLayout>

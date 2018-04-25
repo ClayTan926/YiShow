@@ -6,42 +6,87 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_gray"
     tools:context="cn.tzl.yishow.WelcomeActivity">
-    <TextView
-        android:id="@+id/welcome_skip"
-        android:layout_width="50dp"
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_round"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         android:layout_alignParentEnd="true"
-        android:textColor="@color/gray"
-        android:layout_margin="20dp"
-        android:text="跳过"/>
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:text="倒计时："
+            android:textColor="@color/gray" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:text="5"
+            android:textColor="@color/gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:text=" 秒"
+            android:textColor="@color/gray" />
+
+        <TextView
+            android:id="@+id/welcome_skip"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/shape_round"
+            android:gravity="center"
+            android:text="跳过"
+            android:textColor="@color/gray" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_welcome"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_above="@+id/hint_welcome"
+        android:layout_centerInParent="true"
+        android:padding="8dp"
+        android:src="@drawable/cover"
+        android:textColor="@color/gray" />
+
     <TextView
         android:id="@+id/hint_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/hint_time"
+        android:layout_above="@+id/hint_time"
         android:layout_centerInParent="true"
-        android:text="欢迎"
-        android:textColor="@color/gray"
-        android:textSize="@dimen/fontSizeXL"/>
+        android:padding="2dp"
+        android:text="欢迎使用"
+        android:textColor="@color/hint_gray"
+        android:textSize="@dimen/fontSizeL"
+        android:textStyle="italic|bold" />
+
     <TextView
         android:id="@+id/hint_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/iv_welcome"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
         android:text="2018-08-01"
         android:textColor="@color/gray"
-        android:textSize="@dimen/fontSizeXL"/>
-<ImageView
-    android:id="@+id/iv_welcome"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:src="@drawable/load"
-    android:layout_centerInParent="true"
-    android:contentDescription="@null"/>
+        android:textSize="@dimen/fontSizeM"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hint_welcome"
+        android:paddingTop="10dp"
+        android:contentDescription="@null" />
 </RelativeLayout>

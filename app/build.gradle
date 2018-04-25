@@ -5,16 +5,33 @@ android {
     defaultConfig {
         applicationId "cn.tzl.yishow"
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters 'armeabi-v7a'//, "armeabi", "arm64­v8a"
+        }
+        sourceSets {
+            main {
+                jniLibs.srcDirs = ['libs']
+            }
+        }
+
     }
     buildTypes {
         release {
             minifyEnabled false
             //shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    splits {
+        abi {
+            enable true
+            reset()
+            include  'armeabi-v7a'//, 'x86','x86_64', "armeabi"
+            universalApk true
         }
     }
 }
@@ -46,5 +63,4 @@ dependencies {
     implementation 'com.zkk.view:ZkkRulerView:1.0.0'
     implementation 'com.github.bumptech.glide:glide:4.4.0'
     implementation 'com.mylhyl:acp:1.1.7'
-    implementation files('libs/EasyAR.jar')
 }

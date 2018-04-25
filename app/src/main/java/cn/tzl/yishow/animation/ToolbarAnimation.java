@@ -2,12 +2,8 @@ package cn.tzl.yishow.animation;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
-import android.content.Context;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.TextView;
-
-import cn.tzl.yishow.ToolbarHelper;
 
 /**
  * Created by Tanzl on 2018/3/13.

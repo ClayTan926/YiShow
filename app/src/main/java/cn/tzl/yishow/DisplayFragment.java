@@ -113,8 +113,6 @@ public class DisplayFragment extends Fragment {
         likeList.add(getRandomNum());
         likeList.add(getRandomNum());
         likeList.add(getRandomNum());
-
-
     }
      private String getWindowTime(){
          SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

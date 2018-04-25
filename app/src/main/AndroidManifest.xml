@@ -18,7 +18,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 允许读取手机状态 用于创建BmobInstallation -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -57,7 +56,7 @@
 
         </activity>
         <activity
-            android:name=".Home_measureActivity"
+            android:name=".module_Measure.Home_measureActivity"
             android:launchMode="singleTask">
 
         </activity>
@@ -73,16 +72,21 @@
 
         </activity>
         <activity
-            android:name=".ShowDataActivity"
+            android:name=".module_Measure.ShowDataActivity"
             android:launchMode="singleTask">
 
         </activity>
-        <activity android:name=".WelcomeActivity"
+        <activity
+            android:name=".WelcomeActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".module_Ar.ARActivity">
+
         </activity>
     </application>
 
