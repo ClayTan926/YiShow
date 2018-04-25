@@ -44,7 +44,7 @@ public class WelcomeActivity extends AppCompatActivity {
     @BindView(R.id.textView)
     TextView textView;
     private Animation animation;
-    private int count = 5;
+    private int count = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

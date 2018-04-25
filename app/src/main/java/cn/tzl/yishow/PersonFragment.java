@@ -76,8 +76,15 @@ public class PersonFragment extends Fragment {
         avatarImageView.setAfterCropListener(new AvatarImageView.AfterCropListener() {
             @Override
             public void afterCrop(Bitmap photo) {
-                Log.e(TAG, "设置成功");
-                //avatarImageView.setImageBitmap(photo);
+
+                if (photo != null) {
+                    avatarImageView.setImageBitmap(photo);
+                    Toast.makeText(view.getContext(),"设置成功",Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "设置成功");
+                }else {
+                    Toast.makeText(view.getContext(),"设置失败，请重新设置",Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "设置失败: " );
+                }
                 Toast.makeText(view.getContext(), "设置新的头像成功", Toast.LENGTH_SHORT).show();
             }
         });

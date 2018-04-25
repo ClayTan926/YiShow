@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right|center"
-            android:text="5"
+            android:text="3"
             android:textColor="@color/gray" />
 
         <TextView
@@ -88,5 +88,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/hint_welcome"
         android:paddingTop="10dp"
-        android:contentDescription="@null" />
+        android:contentDescription="@null"
+        android:visibility="gone"/>
 </RelativeLayout>

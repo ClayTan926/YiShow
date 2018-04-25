@@ -58,7 +58,7 @@ import java.util.Locale;
 
 public class AvatarImageView extends android.support.v7.widget.AppCompatImageView {
 
-
+    private static final String TAG = "AvatarImageView";
     //在StartActivityForResult方法中的requestCode
     private static final int REQUEST_IMAGE_BY_CAMERA = 2049;
     private static final int REQUEST_IMAGE_BY_SDCARD = 2050;
@@ -158,7 +158,7 @@ public class AvatarImageView extends android.support.v7.widget.AppCompatImageVie
 
     //设置目录 存放图片
     public void initFile() {
-
+        Log.e(TAG, "initFile:设置目录，存放图片 " );
         // 输出裁剪的临时文件的时间
         String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss", Locale.CHINA).format(new Date());
         // 照片命名
@@ -364,6 +364,7 @@ public class AvatarImageView extends android.support.v7.widget.AppCompatImageVie
      * 选择图片 图片相册
      */
     private void startActionPickCrop() {
+        Log.e(TAG, "startActionPickCrop: 跳转选择图片" );
         Intent intent = new Intent(Intent.ACTION_PICK, null);
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         ((Activity) this.mContext).startActivityForResult(intent,
@@ -374,6 +375,7 @@ public class AvatarImageView extends android.support.v7.widget.AppCompatImageVie
      * 调用相机拍照
      */
     private void startActionCamera(Uri output) {
+        Log.e(TAG, "startActionCamera: " );
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);// 调用系统照相机
         intent.putExtra(MediaStore.EXTRA_OUTPUT, output);
         ((Activity) this.mContext).startActivityForResult(intent,
@@ -392,6 +394,7 @@ public class AvatarImageView extends android.support.v7.widget.AppCompatImageVie
                 break;
             case AvatarImageView.REQUEST_IMAGE_BY_SDCARD:
                 // 请求相册后，裁剪
+                Log.e(TAG, "onActivityResult: 请求相册后，裁剪" );
                 if (data != null) {
                     Uri uri = data.getData();
                     if (uri != null) {
@@ -401,10 +404,11 @@ public class AvatarImageView extends android.support.v7.widget.AppCompatImageVie
                 break;
             case AvatarImageView.REQUEST_IMAGE_AFTER_CROP:
                 //更新头像
+                Log.e(TAG, "onActivityResult: 更新头像中" );
                 if (data != null && data.getExtras() != null) {
                     Bitmap photo = data.getExtras().getParcelable("data");
                     this.setImageBitmap(photo);
-
+                    Log.e(TAG, "onActivityResult: 更新头像" );
                     if (afterCropListener != null) {
                         afterCropListener.afterCrop(photo);
                     }
@@ -420,7 +424,7 @@ public class AvatarImageView extends android.support.v7.widget.AppCompatImageVie
      * @param output 裁剪后图片
      */
     public void startActionCrop(Uri input, Uri output) {
-
+        Log.e(TAG, "startActionCrop: " );
         Intent intentCamera = new Intent("com.android.camera.action.CROP");
         intentCamera.setDataAndType(input, "image/*");// 源文件地址
         intentCamera.putExtra("crop", true);
@@ -603,7 +607,7 @@ public class AvatarImageView extends android.support.v7.widget.AppCompatImageVie
             requestWindowFeature(Window.FEATURE_NO_TITLE);
             getWindow().setBackgroundDrawable(new ColorDrawable(0));
             super.onCreate(savedInstanceState);
-
+            Log.e(TAG, "onCreate: 对话框启动" );
             Window window = getWindow();
             WindowManager.LayoutParams params = window.getAttributes();
             int width = getContext().getResources().getDisplayMetrics().widthPixels;
