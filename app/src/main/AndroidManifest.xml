@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.tzl.yishow">
-
+    <uses-feature android:name="android.hardware.camera.autofocus" />
     <!-- 照相机 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <!-- 允许联网 -->
