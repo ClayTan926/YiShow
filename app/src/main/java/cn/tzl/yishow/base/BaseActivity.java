@@ -82,13 +82,15 @@ public class BaseActivity extends AppCompatActivity {
                 , Manifest.permission.CAMERA
                 , Manifest.permission.READ_EXTERNAL_STORAGE
                 , Manifest.permission.WRITE_EXTERNAL_STORAGE
-                , Manifest.permission.READ_PHONE_STATE)
+                , Manifest.permission.READ_PHONE_STATE
+               // , Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS
+                )
                         .build(),
                 new AcpListener() {
                     @Override
                     public void onGranted() {
                         //授权成功时的操作
-                        Log.e(TAG, "onGranted: 获取到权限" );
+                        Log.e(TAG, "onGranted: 获取到权限");
                     }
 
                     @Override

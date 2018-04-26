@@ -37,5 +37,7 @@
     <string name="todayPush_more">更多推荐</string>
     <string name="clothesBar_title">搭配</string>
     <string name="action_settings">Settings</string>
+    <string name="example_time">2018-04-01</string>
+
 
 </resources>

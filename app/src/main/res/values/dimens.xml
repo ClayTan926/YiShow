@@ -5,4 +5,9 @@
     <dimen name="fontSizeL">20sp</dimen>
     <dimen name="fontSizeS">16sp</dimen>
     <dimen name="fontSizeXL">24sp</dimen>
+    <dimen name="itemPaddingSizeM">10dp</dimen>
+    <dimen name="itemPaddingSizeL">12dp</dimen>
+    <dimen name="itemPadding">8dp</dimen>
+    <dimen name="marginNormal">10dp</dimen>
+    <dimen name="itemPaddingS">5dp</dimen>
 </resources>

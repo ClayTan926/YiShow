@@ -7,6 +7,7 @@
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -29,33 +30,19 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </android.support.v7.widget.Toolbar>
+
+
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_collocation"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="28dp">
+        android:layout_height="510dp"
+        tools:layout_editor_absoluteX="203dp"
+        tools:layout_editor_absoluteY="57dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
     </android.support.v7.widget.RecyclerView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/contact_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center|end"
-        android:layout_margin="10dp"
-        android:backgroundTint="@color/backgroundGray"
-        android:src="@mipmap/ic_launcher"
-        android:visibility="visible"
-        app:backgroundTint="@color/gray"
-        app:backgroundTintMode="multiply"
-        app:borderWidth="0dp"
-        app:elevation="@dimen/activity_horizontal_margin"
-        app:fabSize="auto"
-        app:pressedTranslationZ="@dimen/activity_horizontal_margin"
-        app:rippleColor="@color/gray"
-        app:useCompatPadding="true"
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="415dp" />
 </android.support.constraint.ConstraintLayout>

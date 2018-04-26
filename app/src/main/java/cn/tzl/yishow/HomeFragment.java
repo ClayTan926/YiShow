@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -139,7 +140,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             list.add("" + i);
         }
         homeAdapter = new HomeAdapter(list);
-        final RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(headerView.getContext(),LinearLayoutManager.VERTICAL,false);
         homeRecyclerview.setLayoutManager(layoutManager);
         mLRecyclerViewAdapter = new LRecyclerViewAdapter(homeAdapter);
         homeRecyclerview.setLScrollListener(new LRecyclerView.LScrollListener() {

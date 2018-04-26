@@ -18,11 +18,13 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView show;
+        TextView tvTitle,tvContent,tvTime;
         ImageView iv_item;
         private ViewHolder(View view){
             super(view);
-            show=view.findViewById(R.id.item_home_text);
+            tvTitle=view.findViewById(R.id.item_home_title);
+            tvContent=view.findViewById(R.id.item_home_content);
+            tvTime=view.findViewById(R.id.item_home_time);
             iv_item=view.findViewById(R.id.iv_item);
         }
     }
@@ -40,7 +42,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.show.setText( mlist.get(position).toString());
+        holder.tvTitle.setText( mlist.get(position).toString());
 
     }
 
