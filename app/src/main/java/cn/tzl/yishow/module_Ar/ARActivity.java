@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.PixelFormat;
+import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Build;
@@ -33,6 +35,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -50,14 +55,20 @@ public class ARActivity extends AppCompatActivity {
     private static final String TAG = "ARActivity";
     //EasyAR AppKey
     private static final String key = "LL7elIxHFblHvmZa9We6zSEB1vzClVHtpOLHU4pgBzKpRFcAKlOOWsFBI2lOHuqExX000s7dKixZGFtFrxE13UEQGJ77xUWHfyQBCD0FrTG3LB9EePZeRv778sX6LQ9omCz0LWkILXN8QMPABwEnzmJq1mgOa7NdNze164k8nJ35ZE1UOgzcTqxQYKNAn14d2GRxJFg3";
-    /*   @BindView(R.id.preview)
-       FrameLayout preview;
-       @BindView(R.id.screenshots)
-       Button screenshots;
-       private GLView glView;*/
+    @BindView(R.id.preview)
+    FrameLayout preview;
+    @BindView(R.id.screenshots)
+    Button screenshots;
+    private GLView glView;
     private SurfaceView sv_main_surface;
     private Camera camera;
+    @BindView(R.id.show_sh)
     ImageView preImg;
+    private Bitmap bitmap;
+    private HashMap<Integer, PermissionCallback> permissionCallbacks = new HashMap<Integer, PermissionCallback>();
+    private int permissionRequestCodeSerial = 0;
+    //private ImageView mpreView = findViewById(R.id.show_sh);
+
 
     //沉浸式状态栏
     private void TransparentActionBar() {
@@ -77,66 +88,103 @@ public class ARActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         TransparentActionBar();
-        setContentView(R.layout.act_camera);
-        //ButterKnife.bind(this);
+        setContentView(R.layout.act_ar);
+        ButterKnife.bind(this);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        sv_main_surface = findViewById(R.id.sv_main_surface);
-        preImg = findViewById(R.id.img_preShow);
-        sv_main_surface.setOnClickListener(new View.OnClickListener() {
+        if (!Engine.initialize(this, key)) {
+            Log.e("HelloAR", "Initialization Failed.");
+        }
+
+        glView = new GLView(getApplicationContext());
+
+        requestCameraPermission(new PermissionCallback() {
+            @Override
+            public void onSuccess() {
+                ((ViewGroup) findViewById(R.id.preview)).addView(glView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                /*if (glView != null) {
+                    //添加surface回调函数
+                    glView.getHolder().addCallback(new SurfaceHolder.Callback() {
+
+
+                        @Override//控件创建时，打开照相机
+                        public void surfaceCreated(SurfaceHolder holder) {
+                            //打开照相机
+                            camera = Camera.open();
+                            //int cid=camera.;
+                            camera.setDisplayOrientation(90);//相机位置倒置问题，将相机回转90度，回复正常
+
+                            //设置参数
+                            Camera.Parameters parameters = camera.getParameters();
+                            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);//1连续对焦
+                            parameters.setPictureFormat(PixelFormat.JPEG);
+                            parameters.setRotation(90); //照片旋转90度
+                            parameters.set("jpeg-quality", 100);
+                            camera.setParameters(parameters);
+                            camera.cancelAutoFocus();// 2如果要实现连续的自动对焦，这一句必须加上
+                            //将画面展示到SurfaceView
+                            try {
+                                camera.setPreviewDisplay(glView.getHolder());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            //开启预览效果
+                            camera.startPreview();
+
+                        }
+
+                        @Override//控件改变
+                        public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+                        }
+
+                        @Override//控件销毁
+                        public void surfaceDestroyed(SurfaceHolder holder) {
+                            //照相同一时刻只能允许一个软件打开
+                            if (camera != null) {
+                                camera.stopPreview();
+                                camera.release();//释放内存
+                                camera = null;
+                            }
+                        }
+                    });
+                }*/
+            }
+
+            @Override
+            public void onFailure() {
+            }
+        });
+        glView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                takePhoto(v);
+                String filePath = Environment.getExternalStorageDirectory() + "/DCIM/img_" + System.currentTimeMillis() + ".png";
+                String fileName ="img_" + System.currentTimeMillis() + ".png";
+                Bitmap bm = cropView(glView);
+                if (bm != null) {
+                    preImg.setImageBitmap(bm);
+                }
+              savePhoto(bm);
+
             }
         });
-        //添加surface回调函数
-        sv_main_surface.getHolder().addCallback(new SurfaceHolder.Callback() {
-
-
-            @Override//控件创建时，打开照相机
-            public void surfaceCreated(SurfaceHolder holder) {
-                //打开照相机
-                camera = Camera.open();
-                //int cid=camera.;
-                camera.setDisplayOrientation(90);//相机位置倒置问题，将相机回转90度，回复正常
-
-                //设置参数
-                Camera.Parameters parameters = camera.getParameters();
-                parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);//1连续对焦
-                parameters.setPictureFormat(PixelFormat.JPEG);
-                parameters.setRotation(90); //照片旋转90度
-                parameters.set("jpeg-quality", 100);
-                camera.setParameters(parameters);
-                camera.cancelAutoFocus();// 2如果要实现连续的自动对焦，这一句必须加上
-                //将画面展示到SurfaceView
-                try {
-                    camera.setPreviewDisplay(sv_main_surface.getHolder());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                //开启预览效果
-                camera.startPreview();
-
-            }
-
-            @Override//控件改变
-            public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-            }
-
-            @Override//控件销毁
-            public void surfaceDestroyed(SurfaceHolder holder) {
-                //照相同一时刻只能允许一个软件打开
-                if (camera != null) {
-                    camera.stopPreview();
-                    camera.release();//释放内存
-                    camera = null;
-                }
-            }
-        });
-
 
     }
 
+    /**
+     * 开始考虑用剪切的方法，但是截取只适合静态界面，这里surfaceView是动态的（在不断重绘）不能剪切，后来考虑用绘图的方式将两个bitmap合在一起。
+     *
+     * @param view 截取的当前view
+     * @return bitmap结果
+     */
+    private Bitmap cropView(View view) {
+        view.measure(View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.UNSPECIFIED),
+                View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.UNSPECIFIED));
+        view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
+        view.buildDrawingCache();
+        Bitmap bitmap = view.getDrawingCache();
+        return bitmap;
+    }
 
     public void takePhoto(final View view) {
         camera.takePicture(null, null, new Camera.PictureCallback() {
@@ -152,8 +200,8 @@ public class ARActivity extends AppCompatActivity {
                     FileOutputStream fos = new FileOutputStream(filePath);//图片保存路径
 
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);//压缩格式，质量，压缩路径
-                    preImg.setImageBitmap(bitmap);
-                    preImg.setVisibility(View.VISIBLE);
+                    // preImg.setImageBitmap(bitmap);
+                    //preImg.setVisibility(View.VISIBLE);
                     camera.stopPreview();//关闭预览 处理数据
                     camera.startPreview();//数据处理完后继续开始预览
                     //Toast.makeText(view.getContext(),"已保存",Toast.LENGTH_SHORT).show();
@@ -163,44 +211,20 @@ public class ARActivity extends AppCompatActivity {
             }
         });
     }
-}
-
-
-
-       /*
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-        if (!Engine.initialize(this, key)) {
-            Log.e("HelloAR", "Initialization Failed.");
-        }
-
-        glView = new GLView(this);
-
-        requestCameraPermission(new PermissionCallback() {
-            @Override
-            public void onSuccess() {
-                ((ViewGroup) findViewById(R.id.preview)).addView(glView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            }
-
-            @Override
-            public void onFailure() {
-            }
-        });
-    }
-
 
     //截图方法
-    private void Screenshots(){
+    private void Screenshots() {
         View dView = getWindow().getDecorView();
         dView.setDrawingCacheEnabled(true);
         dView.buildDrawingCache();
-        ImageView i=findViewById(R.id.show_sh);
+
         Bitmap bitmap = Bitmap.createBitmap(dView.getDrawingCache());
 
+        /*//调用系统相机
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (intent.resolveActivity(getPackageManager()) != null) {
             ContentValues contentValues = new ContentValues(2);
-           // String filePath = CommonUtils.getOutputMediaFile().getPath();//要保存照片的绝对路径
+            // String filePath = CommonUtils.getOutputMediaFile().getPath();//要保存照片的绝对路径
 
             //contentValues.put(MediaStore.Images.Media.DATA, filePath);
             //如果想拍完存在系统相机的默认目录,改为
@@ -208,24 +232,23 @@ public class ARActivity extends AppCompatActivity {
 
             contentValues.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
             Uri mPhotoUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-
             intent.putExtra(MediaStore.EXTRA_OUTPUT, mPhotoUri);
             startActivityForResult(intent, 111);
-        }
-
+        }*/
 
         if (bitmap != null) {
             try {
                 // 获取内置SD卡路径
                 String sdCardPath = Environment.getExternalStorageDirectory().getPath();
                 // 图片文件路径
-                String filePath = sdCardPath + File.separator + "screenshot.png";
-                Log.e("a7888", "Screenshots: filePath:"+filePath );
+                //String filePath = sdCardPath + File.separator + "screenshot.png";
+                String filePath = Environment.getExternalStorageDirectory() + "/DCIM/screenshot.png";
+                Log.e("a7888", "Screenshots: filePath:" + filePath);
                 File file = new File(filePath);
                 FileOutputStream os = new FileOutputStream(file);
                 bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
                 Bitmap bm = BitmapFactory.decodeFile(filePath);
-                i.setImageBitmap(bm);
+                preImg.setImageBitmap(bm);
                 os.flush();
                 os.close();
                 Log.d("a7888", "存储完成");
@@ -234,18 +257,107 @@ public class ARActivity extends AppCompatActivity {
         }
     }
 
+    private void savePhoto(Bitmap bitmap){
+        if (bitmap != null) {
+            try {
+                // 获取内置SD卡路径
+                String sdCardPath = Environment.getExternalStorageDirectory().getPath();
+                // 图片文件路径
+                //String filePath = sdCardPath + File.separator + "screenshot.png";
+                String filePath = Environment.getExternalStorageDirectory() + "/DCIM/screenshot.png";
+                Log.e("a7888", "Screenshots: filePath:" + filePath);
+                File file = new File(filePath);
+                FileOutputStream os = new FileOutputStream(file);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
+                Bitmap bm = BitmapFactory.decodeFile(filePath);
+                preImg.setImageBitmap(bm);
+                os.flush();
+                os.close();
+                Log.d("a7888", "存储完成");
+            } catch (Exception e) {
+            }
+        }
+    }
+
+
+    private void save(Bitmap bitmap, String filePath, String fileName) {
+        File file = new File(filePath);
+        if (!file.getParentFile().exists()) {
+            file.getParentFile().mkdirs(); // 创建文件夹
+        }
+        try {
+            BufferedOutputStream bos = new BufferedOutputStream(
+                    new FileOutputStream(file));
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 80, bos); // 向缓冲区之中压缩图片
+            bos.flush();
+            bos.close();
+            Toast.makeText(getApplicationContext(),
+                    "拍照成功，照片已保存在" + fileName + "文件之中！", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "拍照失败！", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * 合并两张bitmap为一张
+     *
+     * @param background 背景
+     * @param foreground 前景
+     * @return Bitmap
+     */
+    public static Bitmap combineBitmap(Bitmap background, Bitmap foreground) {
+        if (background == null) {
+            return null;
+        }
+        int bgWidth = background.getWidth();
+        int bgHeight = background.getHeight();
+        int fgWidth = foreground.getWidth();
+        int fgHeight = foreground.getHeight();
+        Bitmap newMap = Bitmap
+                .createBitmap(bgWidth, bgHeight, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(newMap);
+        canvas.drawBitmap(background, 0, 0, null);
+        canvas.drawBitmap(foreground, (bgWidth - fgWidth) / 2,
+                (bgHeight - fgHeight) / 2, null);
+        canvas.save(Canvas.ALL_SAVE_FLAG);
+        canvas.restore();
+        return newMap;
+    }
+
     @OnClick({R.id.preview, R.id.screenshots})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.preview:
-                Toast.makeText(this,"onclick",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "onclick", Toast.LENGTH_SHORT).show();
+                //takePhoto(view);
                 break;
             case R.id.screenshots:
-                Screenshots();
-                Toast.makeText(this,"成功保存",Toast.LENGTH_SHORT).show();
+                //Screenshots();
+                //cropView(glView);
+                Button b=findViewById(R.id.screenshots);
+                Bitmap bm = cropView(glView);
+                if (bm != null) {
+                    preImg.setImageBitmap(bm);
+                }
+                //b.setVisibility(View.GONE);
+                Toast.makeText(getApplicationContext(), "成功保存", Toast.LENGTH_SHORT).show();
 
                 break;
         }
+    }
+
+    private Bitmap drawableToBitamp(Drawable drawable) {
+        int w = drawable.getIntrinsicWidth();
+        int h = drawable.getIntrinsicHeight();
+        System.out.println("Drawable转Bitmap");
+        Bitmap.Config config = drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
+                : Bitmap.Config.RGB_565;
+        bitmap = Bitmap.createBitmap(w, h, config);
+        // 注意，下面三行代码要用到，否在在View或者surfaceview里的canvas.drawBitmap会看不到图
+        Canvas canvas = new Canvas(bitmap);
+        drawable.setBounds(0, 0, w, h);
+        drawable.draw(canvas);
+        return bitmap;
     }
 
     private interface PermissionCallback {
@@ -254,8 +366,6 @@ public class ARActivity extends AppCompatActivity {
         void onFailure();
     }
 
-    private HashMap<Integer, PermissionCallback> permissionCallbacks = new HashMap<Integer, PermissionCallback>();
-    private int permissionRequestCodeSerial = 0;
 
     @TargetApi(23)
     private void requestCameraPermission(PermissionCallback callback) {
@@ -325,4 +435,3 @@ public class ARActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-*/
