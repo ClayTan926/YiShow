@@ -251,24 +251,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    /*class LoadDataThread implements Runnable {
-        @Override
-        public void run() {
-            Message msg = new Message();
-            msg.what = 1;
-            handler.sendMessage(msg);
-        }
-    }
-    @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            homeAdapter.notifyDataSetChanged();
-            mLRecyclerViewAdapter.notifyDataSetChanged();
-            initRecyclerview(headerView);
-        }
-    };
-*/
+
 
 }

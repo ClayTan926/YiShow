@@ -1,12 +1,15 @@
 package cn.tzl.yishow;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +33,8 @@ public class UserInfoActivity extends AppCompatActivity {
     EditText etConfirmPwd;
     @BindView(R.id.btn_save_user_info)
     Button btnSaveUserInfo;
+    @BindView(R.id.iv_user_back)
+    ImageView ivUserBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +53,9 @@ public class UserInfoActivity extends AppCompatActivity {
         loadData();
     }
 
-    private void loadData(){
-        bmobUser=BmobUser.getCurrentUser();
-        if (bmobUser!=null){
+    private void loadData() {
+        bmobUser = BmobUser.getCurrentUser();
+        if (bmobUser != null) {
             etUsername.setText(bmobUser.getUsername());
             etMobile.setText(bmobUser.getMobilePhoneNumber());
             etMail.setText(bmobUser.getEmail());
@@ -70,7 +75,14 @@ public class UserInfoActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick(R.id.btn_save_user_info)
-    public void onViewClicked() {
+    @OnClick({R.id.btn_save_user_info, R.id.iv_user_back})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_user_back:
+                finish();
+                break;
+            case R.id.btn_save_user_info:
+                break;
+        }
     }
 }

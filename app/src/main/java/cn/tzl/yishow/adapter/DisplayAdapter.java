@@ -71,7 +71,7 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.ViewHold
         holder.postTime.setText(comment.getCreatedAt());
         holder.content.setText(comment.getCcontent());
         //holder.photo.setImageResource(photoList.get(position));
-        holder.comment.setText(comment.getCnun());
+        holder.comment.setText(comment.getCnum());
         holder.like.setText(comment.getLikenum());
     }
 

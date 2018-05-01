@@ -53,6 +53,7 @@
                 android:layout_height="160dp"
                 android:layout_margin="5dp"
                 android:scaleType="fitCenter"
+                android:layout_gravity="center"
                 android:contentDescription="@null"/>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -70,6 +71,7 @@
                     android:id="@+id/tv_displayComment"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_toStartOf="@+id/icon_displayLike"/>
                 <ImageView
                     android:id="@+id/icon_displayLike"
@@ -82,6 +84,7 @@
                     android:id="@+id/tv_displayLike"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
+                   android:gravity="center"
                     android:layout_alignParentEnd="true"/>
             </RelativeLayout>
         </LinearLayout>

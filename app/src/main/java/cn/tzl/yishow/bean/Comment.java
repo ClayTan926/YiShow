@@ -12,7 +12,7 @@ public class Comment extends BmobObject {
     private String image;
     private String avatar;
     private String ccontent;
-    private String cnun;
+    private String cnum;
     private String likenum;
     private String time;
 
@@ -68,11 +68,11 @@ public class Comment extends BmobObject {
         this.ccontent = ccontent;
     }
 
-    public String getCnun() {
-        return cnun;
+    public String getCnum() {
+        return cnum;
     }
 
     public void setCnun(String cnun) {
-        this.cnun = cnun;
+        this.cnum = cnun;
     }
 }

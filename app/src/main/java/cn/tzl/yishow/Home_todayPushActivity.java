@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -35,6 +37,8 @@ public class Home_todayPushActivity extends AppCompatActivity {
     PushTwoFragment twoFrag;
     @BindView(R.id.tv_todayPush_More)
     TextView tvTodayPushMore;
+    @BindView(R.id.iv_todayPush_back)
+    ImageView ivBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +68,19 @@ public class Home_todayPushActivity extends AppCompatActivity {
         viewPager.setCurrentItem(0);
     }
 
-    @OnClick(R.id.tv_todayPush_More)
-    public void onViewClicked() {
-        Intent intent=new Intent("cn.tzl.yishow.more");
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+    @OnClick({R.id.tv_todayPush_More,R.id.iv_todayPush_back})
+    public void onViewClicked(View view) {
+        switch (view.getId()){
+            case R.id.tv_todayPush_More:
+                Intent intent=new Intent("cn.tzl.yishow.more");
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                break;
+            case R.id.iv_todayPush_back:
+                finish();
+                break;
+        }
+
     }
 
     private void TransparentActionBar(){
