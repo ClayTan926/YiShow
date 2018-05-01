@@ -1,16 +1,18 @@
 package cn.tzl.yishow;
 
 
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.AppBarLayout;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +31,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.tzl.yishow.adapter.HomeAdapter;
 import cn.tzl.yishow.animation.ToolbarAnimation;
+import cn.tzl.yishow.bean.Info;
 import cn.tzl.yishow.module_Measure.Home_measureActivity;
 import cn.tzl.yishow.utils.GlideImageLoader;
 
@@ -68,6 +74,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "HomeFragment";
     private static boolean isScroll = false;
+    private View headerView;
+    private List dataList = new ArrayList();
 
     public static HomeFragment newInstance(String param1) {
         HomeFragment fragment = new HomeFragment();
@@ -90,12 +98,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_home, container, false);
-        View headerView = inflater.inflate(R.layout.header_home, container, false);
+        headerView = inflater.inflate(R.layout.header_home, container, false);
         ButterKnife.bind(this, view);
-
         initBanner(headerView);
+        loadInfo();
         initRecyclerview(headerView);
-
+       /* LoadDataThread thread=new LoadDataThread();
+        thread.run();*/
         return view;
     }
 
@@ -104,13 +113,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         banner = view.findViewById(R.id.home_banner);
         btn_measure = view.findViewById(R.id.btn_home_measure);
         btn_todyPush = view.findViewById(R.id.btn_home_todayPush);
-
         btn_measure.setOnClickListener(this);
         btn_todyPush.setOnClickListener(this);
 
         List<Integer> images = new ArrayList<>();
-        images.add(R.mipmap.home);
-        images.add(R.mipmap.category);
+        images.add(R.drawable.b1);
+        images.add(R.drawable.b2);
+        images.add(R.drawable.b3);
+        images.add(R.drawable.b4);
+        images.add(R.drawable.b5);
 
         //设置banner样式
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
@@ -125,7 +136,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         //设置自动轮播，默认为true
         banner.isAutoPlay(true);
         //设置轮播时间
-        banner.setDelayTime(2000);
+        banner.setDelayTime(4000);
         //设置指示器位置（当banner模式中有指示器时）
         banner.setIndicatorGravity(BannerConfig.CENTER);
         //banner设置方法全部调用完毕时最后调用
@@ -133,16 +144,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
+
     public void initRecyclerview(View headerView) {
 
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add("" + i);
-        }
-        homeAdapter = new HomeAdapter(list);
-        final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(headerView.getContext(),LinearLayoutManager.VERTICAL,false);
+        homeAdapter = new HomeAdapter(dataList);
+        final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(headerView.getContext(), LinearLayoutManager.VERTICAL, false);
         homeRecyclerview.setLayoutManager(layoutManager);
         mLRecyclerViewAdapter = new LRecyclerViewAdapter(homeAdapter);
+
         homeRecyclerview.setLScrollListener(new LRecyclerView.LScrollListener() {
             @Override
             public void onScrollUp() {
@@ -213,4 +222,53 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onDestroyView();
 
     }
+
+    private void loadInfo() {
+        BmobQuery<Info> query = new BmobQuery<>();
+        query.addWhereEqualTo("type", "info");
+        query.setLimit(50);
+        query.findObjects(new FindListener<Info>() {
+            @Override
+            public void done(List<Info> list, BmobException e) {
+                //initRecyclerview(headerView, list);
+                if (list != null) {
+                    dataList = list;
+                    homeAdapter.notifyDataSetChanged();
+                    mLRecyclerViewAdapter.notifyDataSetChanged();
+                    initRecyclerview(headerView);
+
+                    Log.e(TAG, "done:size " + list.size());
+                    Log.e(TAG, "done:e :" + e);
+                    for (Info info : list) {
+                        Log.e(TAG, "done:title " + info.getCreatedAt());
+                    }
+                } else {
+                    Log.e(TAG, "done:  null");
+                    Log.e(TAG, "done:e :" + e);
+                }
+            }
+        });
+
+    }
+
+    /*class LoadDataThread implements Runnable {
+        @Override
+        public void run() {
+            Message msg = new Message();
+            msg.what = 1;
+            handler.sendMessage(msg);
+        }
+    }
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            homeAdapter.notifyDataSetChanged();
+            mLRecyclerViewAdapter.notifyDataSetChanged();
+            initRecyclerview(headerView);
+        }
+    };
+*/
+
 }

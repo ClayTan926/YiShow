@@ -24,7 +24,7 @@ import cn.tzl.yishow.module_Login.activity.LoginActivity;
 
 /**
  * Created by Tanzl on 2018/2/23.
- * Class Comment:
+ * Class CommentBean:
  */
 
 public class Home_measureActivity extends AppCompatActivity {
@@ -140,12 +140,13 @@ public class Home_measureActivity extends AppCompatActivity {
 
     }
 
-    private void checkData(){
-        if (!sp_bodyData.getString("height","").equals("")){
-            Intent intent=new Intent(this,ShowDataActivity.class);
-            startActivity(intent);
-            finish();
+    private void checkData() {
+        if (null != sp_bodyData) {
+            if (!sp_bodyData.getString("height", "").equals("")) {
+                Intent intent = new Intent(this, ShowDataActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
     }
-
 }

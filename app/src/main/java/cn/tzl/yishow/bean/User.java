@@ -1,4 +1,4 @@
-package cn.tzl.yishow.module_Login.bean;
+package cn.tzl.yishow.bean;
 
 
 import cn.bmob.v3.BmobObject;

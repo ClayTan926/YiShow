@@ -23,7 +23,7 @@ import cn.tzl.yishow.module_Push.PushTwoFragment;
 
 /**
  * Created by Tanzl on 2018/2/23.
- * Class Comment:
+ * Class CommentBean:
  */
 
 public class Home_todayPushActivity extends AppCompatActivity {

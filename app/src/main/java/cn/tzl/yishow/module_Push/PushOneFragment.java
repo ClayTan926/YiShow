@@ -14,7 +14,7 @@ import cn.tzl.yishow.R;
 
 /**
  * Created by Tanzl on 2018/2/23.
- * Class Comment:推荐1
+ * Class CommentBean:推荐1
  */
 
 public class PushOneFragment extends Fragment {

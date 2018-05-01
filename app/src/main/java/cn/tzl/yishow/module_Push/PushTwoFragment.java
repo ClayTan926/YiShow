@@ -12,7 +12,7 @@ import cn.tzl.yishow.R;
 
 /**
  * Created by Tanzl on 2018/2/23.
- * Class Comment:推荐2
+ * Class CommentBean:推荐2
  */
 
 public class PushTwoFragment extends Fragment {

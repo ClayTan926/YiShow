@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Created by Tanzl on 2018/2/23.
- * Class Comment:
+ * Class CommentBean:
  */
 
 public class FragAdapter extends FragmentPagerAdapter {

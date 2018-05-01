@@ -13,7 +13,7 @@ import cn.tzl.yishow.R;
 
 /**
  * Created by Tanzl on 2018/2/5.
- * Class Comment:
+ * Class CommentBean:
  */
 
 public class CategoryAdapter extends BaseAdapter {

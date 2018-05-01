@@ -22,7 +22,7 @@ import cn.tzl.yishow.adapter.CategoryContentAdapter;
 
 /**
  * Created by Tanzl on 2018/2/6.
- * Class Comment:
+ * Class CommentBean:
  */
 
 public class Cate_ContentFragment extends Fragment{

@@ -10,11 +10,13 @@ import android.widget.TextView;
 import java.util.List;
 
 import cn.tzl.yishow.R;
+import cn.tzl.yishow.bean.Comment;
+import cn.tzl.yishow.bean.Info;
 
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
-    private List mlist;
+    private List<Info> mlist;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -29,8 +31,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         }
     }
 
-    public HomeAdapter(List mlist){
-        this.mlist=mlist;
+    public HomeAdapter(List mList){
+        this.mlist=mList;
     }
 
     @Override
@@ -41,8 +43,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
-        holder.tvTitle.setText( mlist.get(position).toString());
+        Info info =(Info) mlist.get(position);
+        holder.tvTitle.setText( info.getTitle());
+        holder.tvContent.setText(info.getContent());
+        holder.tvTime.setText(info.getUpdatedAt());
 
     }
 

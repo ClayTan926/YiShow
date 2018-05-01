@@ -13,7 +13,7 @@ import cn.tzl.yishow.R;
 
 /**
  * Created by Tanzl on 2018/2/8.
- * Class Comment:
+ * Class CommentBean:
  */
 
 public class CategoryContentAdapter extends RecyclerView.Adapter<CategoryContentAdapter.ViewHolder>{
