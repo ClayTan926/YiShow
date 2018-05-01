@@ -1,25 +1,22 @@
 package cn.tzl.yishow;
 
 
-import android.annotation.SuppressLint;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.design.widget.AppBarLayout;
-import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-
+import com.bumptech.glide.Glide;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.youth.banner.Banner;
@@ -74,6 +71,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "HomeFragment";
     private static boolean isScroll = false;
+    @BindView(R.id.main_load)
+    ImageView mainLoad;
     private View headerView;
     private List dataList = new ArrayList();
 
@@ -100,6 +99,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.frag_home, container, false);
         headerView = inflater.inflate(R.layout.header_home, container, false);
         ButterKnife.bind(this, view);
+        loadAnima(true);
         initBanner(headerView);
         loadInfo();
         initRecyclerview(headerView);
@@ -169,7 +169,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     toolbar_home.setVisibility(View.VISIBLE);
                 } else {
                     ToolbarAnimation.hideToolbar(toolbar_home);
-                    //toolbar_home.setVisibility(View.GONE);
+
                 }
 
             }
@@ -224,6 +224,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void loadInfo() {
+        loadAnima(false);
         BmobQuery<Info> query = new BmobQuery<>();
         query.addWhereEqualTo("type", "info");
         query.setLimit(50);
@@ -236,21 +237,22 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     homeAdapter.notifyDataSetChanged();
                     mLRecyclerViewAdapter.notifyDataSetChanged();
                     initRecyclerview(headerView);
-
-                    Log.e(TAG, "done:size " + list.size());
-                    Log.e(TAG, "done:e :" + e);
-                    for (Info info : list) {
-                        Log.e(TAG, "done:title " + info.getCreatedAt());
-                    }
-                } else {
-                    Log.e(TAG, "done:  null");
-                    Log.e(TAG, "done:e :" + e);
                 }
             }
         });
 
     }
 
+    private void loadAnima(Boolean isShow) {
+        Glide.with(this)
+                .load(R.drawable.load)
+                .into(mainLoad);
+        if (isShow) {
+            mainLoad.setVisibility(View.VISIBLE);
+        } else {
+            mainLoad.setVisibility(View.GONE);
+        }
+    }
 
 
 }

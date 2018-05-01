@@ -38,6 +38,9 @@
     <string name="clothesBar_title">搭配</string>
     <string name="action_settings">Settings</string>
     <string name="example_time">2018-04-01</string>
+    <string name="addNewCooment">评论</string>
+    <string name="text_title">标题</string>
+    <string name="text_content">内容</string>
 
 
 </resources>

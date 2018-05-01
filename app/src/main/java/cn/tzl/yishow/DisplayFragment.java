@@ -1,6 +1,7 @@
 package cn.tzl.yishow;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 
@@ -35,16 +37,11 @@ public class DisplayFragment extends Fragment {
     LRecyclerViewAdapter lRecyclerViewAdapter;
     DisplayAdapter displayAdapter;
     List<Comment> dataList;
-    List<String> userList;
-    List<String> timeList;
-    List<String> contentList;
-    List<Integer> photoList;
-    List<String> commentList;
-    List<String> likeList;
     @BindView(R.id.show_load)
     ImageView showLoad;
     @BindView(R.id.fab_showAdd)
     FloatingActionButton fabShowAdd;
+    private View view;
 
     public static DisplayFragment newInstance(String param1) {
         DisplayFragment fragment = new DisplayFragment();
@@ -62,9 +59,9 @@ public class DisplayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_display, container, false);
+        view= inflater.inflate(R.layout.frag_display, container, false);
         ButterKnife.bind(this, view);
-        showLoad.setVisibility(View.VISIBLE);
+        loadAnima(true);
         loadData();
 
         return view;
@@ -72,7 +69,7 @@ public class DisplayFragment extends Fragment {
 
 
     private void initView() {
-        showLoad.setVisibility(View.GONE);
+        loadAnima(false);
         displayAdapter = new DisplayAdapter(dataList);
         lRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
@@ -118,10 +115,22 @@ public class DisplayFragment extends Fragment {
     @OnClick(R.id.fab_showAdd)
     public void onViewClicked() {
         AddComment();
+        Intent intent=new Intent(view.getContext(),NewCommentActivity.class);
+        startActivity(intent);
     }
 
-    private void AddComment(){
-        showLoad.setVisibility(View.VISIBLE);
+    private void AddComment() {
+        loadAnima(true);
+    }
 
+    private void loadAnima(Boolean isShow) {
+        Glide.with(this)
+                .load(R.drawable.load)
+                .into(showLoad);
+        if (isShow) {
+            showLoad.setVisibility(View.VISIBLE);
+        } else {
+            showLoad.setVisibility(View.GONE);
+        }
     }
 }

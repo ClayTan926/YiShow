@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,15 +23,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.ViewHolder> {
 
-    private List<Comment> dataList=new ArrayList<>();
-  /*  private List<String> userList;
-    private List<String> timeList;
-    private List<String> contentList;
-    private List<Integer> photoList;
-    private List<String> commentList;
-    private List<String> likeList;
-*/
-    //public DisplayAdapter(List<Integer> avatarList, List<String> userList, List<String> timeList, List<String> contentList, List<Integer> photoList,List<String> commentList,List<String> likeList) {
+    private List<Comment> dataList = new ArrayList<>();
+    View view;
     public DisplayAdapter(List<Comment> list) {
         this.dataList = list;
     }
@@ -59,18 +54,33 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.ViewHold
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_display, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_display, parent, false);
         return new DisplayAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Comment comment = dataList.get(position);
+        if (comment.getAvatar() != null) {
+            Glide.with(view)
+                    .load(comment.getAvatar())
+                    .into(holder.avatar);
+        } else {
+            holder.avatar.setImageResource(R.mipmap.avaterimage);
+        }
         //holder.avatar.setImageResource();
         holder.userName.setText(comment.getUsername());
         holder.postTime.setText(comment.getCreatedAt());
         holder.content.setText(comment.getCcontent());
-        //holder.photo.setImageResource(photoList.get(position));
+        if (comment.getImage() != null) {
+            Glide.with(view)
+                    .load(comment.getAvatar())
+                    .into(holder.photo);
+            holder.photo.setVisibility(View.VISIBLE);
+        } else {
+            holder.photo.setVisibility(View.GONE);
+        }
+
         holder.comment.setText(comment.getCnum());
         holder.like.setText(comment.getLikenum());
     }

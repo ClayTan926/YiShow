@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.tzl.yishow">
+
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <!-- 照相机 -->
     <uses-permission android:name="android.permission.CAMERA" />
@@ -18,7 +19,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!-- 允许读取手机状态 用于创建BmobInstallation -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <!--允许挂载和反挂载文件系统可移动存储-->
+    <!-- 允许挂载和反挂载文件系统可移动存储 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <application
@@ -31,40 +32,26 @@
         <activity
             android:name="base.BaseActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:launchMode="singleTask">
-
-        </activity>
-        <activity android:name=".HelpActivity">
-
-        </activity>
+            android:launchMode="singleTask"></activity>
+        <activity android:name=".HelpActivity"></activity>
         <activity
             android:name=".module_Login.activity.RegisterActivity"
-            android:launchMode="singleTask">
-
-        </activity>
+            android:launchMode="singleTask"></activity>
         <activity
             android:name=".module_Login.activity.LoginActivity"
             android:label="@string/title_activity_login"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".Home_todayPushActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTask">
-
-        </activity>
+            android:launchMode="singleTask"></activity>
         <activity
             android:name=".module_Measure.Home_measureActivity"
-            android:launchMode="singleTask">
-
-        </activity>
+            android:launchMode="singleTask"></activity>
         <activity android:name=".HotActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -73,14 +60,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserInfoActivity">
-
-        </activity>
+        <activity android:name=".UserInfoActivity"></activity>
         <activity
             android:name=".module_Measure.ShowDataActivity"
-            android:launchMode="singleTask">
-
-        </activity>
+            android:launchMode="singleTask"></activity>
         <activity
             android:name=".WelcomeActivity"
             android:launchMode="singleTask">
@@ -93,12 +76,15 @@
         <activity
             android:name=".module_Ar.ARActivity"
             android:configChanges="keyboardHidden|orientation|screenSize">
+
             <!-- IMAGE_CAPTURE  返回Bitmap or 图片文件 -->
             <intent-filter>
                 <action android:name="android.media.action.IMAGE_CAPTURE" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".NewCommentActivity"></activity>
     </application>
 
 </manifest>
