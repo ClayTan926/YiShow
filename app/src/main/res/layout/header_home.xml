@@ -4,6 +4,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+    android:background="@color/mywhite"
         android:id="@+id/header_home">
 
     <com.youth.banner.Banner
@@ -15,8 +16,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:orientation="horizontal">
@@ -37,7 +38,7 @@
             android:padding="@dimen/marginNormal"
             android:text="@string/home_measure"
             android:textColor="@color/mywhite"
-            android:textSize="@dimen/fontSizeM" />
+            android:textSize="@dimen/fontSizeS" />
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
@@ -56,7 +57,7 @@
             android:padding="@dimen/marginNormal"
             android:background="@color/hint_gray"
             android:textColor="@color/mywhite"
-            android:textSize="@dimen/fontSizeM" />
+            android:textSize="@dimen/fontSizeS" />
     </android.support.v7.widget.CardView>
 
     </RelativeLayout>

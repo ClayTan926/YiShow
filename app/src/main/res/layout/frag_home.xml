@@ -32,7 +32,8 @@
    <com.github.jdsjlzx.recyclerview.LRecyclerView
        android:id="@+id/home_recyclerview"
        android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+       android:layout_height="wrap_content"
+       android:background="@color/backgroundGray">
    </com.github.jdsjlzx.recyclerview.LRecyclerView>
 
 
