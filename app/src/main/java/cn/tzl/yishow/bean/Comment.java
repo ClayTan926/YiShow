@@ -15,6 +15,7 @@ public class Comment extends BmobObject {
     private String cnum;
     private String likenum;
     private String time;
+    private String type;
 
     public String getUsername() {
         return username;
@@ -74,5 +75,17 @@ public class Comment extends BmobObject {
 
     public void setCnun(String cnun) {
         this.cnum = cnun;
+    }
+
+    public void setCnum(String cnum) {
+        this.cnum = cnum;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

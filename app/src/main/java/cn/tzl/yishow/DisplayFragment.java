@@ -1,6 +1,7 @@
 package cn.tzl.yishow;
 
 import android.app.Fragment;
+import android.app.Instrumentation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
@@ -21,6 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.tzl.yishow.adapter.DisplayAdapter;
@@ -31,7 +34,7 @@ import cn.tzl.yishow.bean.Comment;
  */
 
 public class DisplayFragment extends Fragment {
-
+    private static final String TAG = "DisplayFragment";
     @BindView(R.id.rv_display)
     LRecyclerView lRecyclerView;
     LRecyclerViewAdapter lRecyclerViewAdapter;
@@ -42,12 +45,9 @@ public class DisplayFragment extends Fragment {
     @BindView(R.id.fab_showAdd)
     FloatingActionButton fabShowAdd;
     private View view;
-
+    private BmobUser bmobUser;
     public static DisplayFragment newInstance(String param1) {
         DisplayFragment fragment = new DisplayFragment();
-       /* Bundle args = new Bundle();
-        args.putString("agrs1", param1);
-        fragment.setArguments(args);*/
         return fragment;
     }
 
@@ -63,6 +63,8 @@ public class DisplayFragment extends Fragment {
         ButterKnife.bind(this, view);
         loadAnima(true);
         loadData();
+         bmobUser= BmobUser.getCurrentUser();
+
 
         return view;
     }
@@ -115,8 +117,12 @@ public class DisplayFragment extends Fragment {
     @OnClick(R.id.fab_showAdd)
     public void onViewClicked() {
         AddComment();
-        Intent intent=new Intent(view.getContext(),NewCommentActivity.class);
-        startActivity(intent);
+        if (null != bmobUser) {
+            Intent intent=new Intent(view.getContext(),NewCommentActivity.class);
+            startActivityForResult(intent,0);
+        }else {
+            Toast.makeText(getActivity(),"当前未登录，登陆后，使用该功能",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void AddComment() {
@@ -125,12 +131,35 @@ public class DisplayFragment extends Fragment {
 
     private void loadAnima(Boolean isShow) {
         Glide.with(this)
-                .load(R.drawable.load)
+                .load(R.drawable.loading)
                 .into(showLoad);
         if (isShow) {
             showLoad.setVisibility(View.VISIBLE);
         } else {
             showLoad.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadData();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0) {
+            if (resultCode == 0) {
+                if (data != null) {
+                    loadData();
+                    initView();
+                    Log.e(TAG, "onActivityResult: 获取返回结果");
+                }
+            }
+            if (resultCode==1){
+                Log.e(TAG, "onActivityResult: back" );
+            }
         }
     }
 }

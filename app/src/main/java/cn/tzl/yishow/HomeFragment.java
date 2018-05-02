@@ -99,9 +99,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.frag_home, container, false);
         headerView = inflater.inflate(R.layout.header_home, container, false);
         ButterKnife.bind(this, view);
-        loadAnima(true);
         initBanner(headerView);
         loadInfo();
+        loadAnima(true);
         initRecyclerview(headerView);
        /* LoadDataThread thread=new LoadDataThread();
         thread.run();*/
@@ -192,6 +192,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         super.onStart();
         //开始轮播
         banner.startAutoPlay();
+
     }
 
     @Override
@@ -224,7 +225,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void loadInfo() {
-        loadAnima(false);
         BmobQuery<Info> query = new BmobQuery<>();
         query.addWhereEqualTo("type", "info");
         query.setLimit(50);
@@ -233,6 +233,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public void done(List<Info> list, BmobException e) {
                 //initRecyclerview(headerView, list);
                 if (list != null) {
+                    loadAnima(false);
                     dataList = list;
                     homeAdapter.notifyDataSetChanged();
                     mLRecyclerViewAdapter.notifyDataSetChanged();
@@ -245,7 +246,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private void loadAnima(Boolean isShow) {
         Glide.with(this)
-                .load(R.drawable.load)
+                .load(R.drawable.loading)
                 .into(mainLoad);
         if (isShow) {
             mainLoad.setVisibility(View.VISIBLE);

@@ -40,17 +40,17 @@ public class UserLogin {
             }
         });
 
-      /*  BmobQuery<User> query = new BmobQuery<User>();
+      /*  BmobQuery<MyUser> query = new BmobQuery<MyUser>();
         //查询是否有对应手机号
         query.addWhereEqualTo("mobile",Mobile);
         //返回一条数据
         query.setLimit(1);
         //执行查询方法
-        query.findObjects(new FindListener<User>() {
+        query.findObjects(new FindListener<MyUser>() {
             @Override
-            public void done(List<User> object, BmobException e) {
+            public void done(List<MyUser> object, BmobException e) {
                 if(e==null){
-                    for (User user : object) {
+                    for (MyUser user : object) {
                         //获取密码信息
                         if(Password.equals(user.getPassword())){
                             Toast.makeText(context,"登陆成功",Toast.LENGTH_SHORT).show();

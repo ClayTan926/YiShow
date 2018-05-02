@@ -1,5 +1,6 @@
 package cn.tzl.yishow;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -30,6 +31,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.tzl.yishow.utils.ActivityCollector;
 
 public class WelcomeActivity extends AppCompatActivity {
     private static final String TAG = "WelcomeActivity";
@@ -115,21 +117,23 @@ public class WelcomeActivity extends AppCompatActivity {
     private void actionStart() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        finish();
+         finish();
     }
     private int getCount() {
         count--;
        if (count == 0) {
           actionStart();
+
         }
         return count;
     }
 
+    @SuppressLint("HandlerLeak")
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
-                textView.setText(getCount()+"");
+                textView.setText(String.valueOf(getCount()+""));
                 handler.sendEmptyMessageDelayed(0, 1000);
                 animation.reset();
                 textView.startAnimation(animation);

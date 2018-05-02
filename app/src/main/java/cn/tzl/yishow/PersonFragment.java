@@ -141,8 +141,10 @@ public class PersonFragment extends Fragment {
                 break;
             case R.id.tv_quit:
                 BmobUser.logOut();   //清除缓存用户对象
-                Log.e(TAG, "onViewClicked:  用户注销");
-                //BmobUser currentUser = BmobUser.getCurrentUser(); // 现在的currentUser是null了
+                BmobUser currentUser = BmobUser.getCurrentUser(); // 现在的currentUser是null了
+                if (currentUser==null){
+                    Log.e(TAG, "onViewClicked:  用户注销");
+                }
                 ActivityCollector.finishAll();
                 Intent loginIntent = new Intent(view.getContext(), LoginActivity.class);
                 view.getContext().startActivity(loginIntent);
