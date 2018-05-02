@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="@string/addNewCooment"
+                android:text="@string/addNewComment"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/fontSizeL" />
         </android.support.v7.widget.Toolbar>

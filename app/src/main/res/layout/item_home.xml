@@ -39,6 +39,7 @@
             android:gravity="center"
             android:paddingStart="20dp"
             android:text="这是文字内容"
+            android:textColor="@color/hint_gray"
             android:textSize="@dimen/fontSizeM" />
 
         <TextView
@@ -48,8 +49,8 @@
             android:layout_gravity="end"
             android:padding="@dimen/itemPaddingS"
             android:text="@string/example_time"
-            android:textColor="@color/hint_gray"
-            android:textSize="@dimen/fontSizeS" />
+            android:textColor="@color/gray"
+            android:textSize="12sp" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
 

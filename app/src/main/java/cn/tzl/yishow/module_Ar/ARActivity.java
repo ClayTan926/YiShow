@@ -158,13 +158,16 @@ public class ARActivity extends AppCompatActivity {
         glView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(ARActivity.this,"aaa",Toast.LENGTH_SHORT).show();
                 String filePath = Environment.getExternalStorageDirectory() + "/DCIM/img_" + System.currentTimeMillis() + ".png";
                 String fileName ="img_" + System.currentTimeMillis() + ".png";
                 Bitmap bm = cropView(glView);
                 if (bm != null) {
                     preImg.setImageBitmap(bm);
+                    Log.e(TAG, "onClick: "+bm.toString() );
                 }
-              savePhoto(bm);
+                Log.e(TAG, "onClick:  null" );
+                //savePhoto(bm);
 
             }
         });
@@ -178,13 +181,23 @@ public class ARActivity extends AppCompatActivity {
      * @return bitmap结果
      */
     private Bitmap cropView(View view) {
+        Log.e(TAG, "cropView: "+view.toString() );
         view.measure(View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.UNSPECIFIED),
                 View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.UNSPECIFIED));
+        Log.e(TAG, "cropView: "+view.getHeight()+"ss "+view.getWidth() );
         view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
-        view.buildDrawingCache();
+        view.setDrawingCacheEnabled(true);
+        view.buildDrawingCache(true);
+
         Bitmap bitmap = view.getDrawingCache();
+        if (bitmap!=null){
+            Log.e(TAG, "cropView: bitmap"+bitmap.toString() );
+        }else {
+            Log.e(TAG, "cropView: sdasd" );
+        }
         return bitmap;
     }
+
 
     public void takePhoto(final View view) {
         camera.takePicture(null, null, new Camera.PictureCallback() {
@@ -192,7 +205,6 @@ public class ARActivity extends AppCompatActivity {
             public void onPictureTaken(byte[] bytes, Camera camera) {
                 //技术：图片压缩技术（如果图片不压缩，图片大小会过大，会报一个oom内存溢出的错误）
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-
 
                 try {
                     String filePath = Environment.getExternalStorageDirectory() + "/DCIM/img_" + System.currentTimeMillis() + ".png";
@@ -332,13 +344,13 @@ public class ARActivity extends AppCompatActivity {
                 //takePhoto(view);
                 break;
             case R.id.screenshots:
-                //Screenshots();
+              /*  //Screenshots();
                 //cropView(glView);
                 Button b=findViewById(R.id.screenshots);
                 Bitmap bm = cropView(glView);
                 if (bm != null) {
                     preImg.setImageBitmap(bm);
-                }
+                }*/
                 //b.setVisibility(View.GONE);
                 Toast.makeText(getApplicationContext(), "成功保存", Toast.LENGTH_SHORT).show();
 
