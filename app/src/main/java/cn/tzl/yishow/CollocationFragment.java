@@ -4,7 +4,15 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+
+
+
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +24,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.tzl.yishow.adapter.ARClothesAdapter;
 import cn.tzl.yishow.adapter.CollocationAdapter;
+import cn.tzl.yishow.adapter.FragAdapter;
 import cn.tzl.yishow.module_Ar.ARActivity;
+import cn.tzl.yishow.module_Ar.fragment.ClothesFragment;
+import cn.tzl.yishow.module_Push.PushOneFragment;
+import cn.tzl.yishow.module_Push.PushTwoFragment;
 
 /**
  * Created by Administrator on 2017/12/14 0014.
@@ -32,6 +45,8 @@ public class CollocationFragment extends Fragment {
     RecyclerView rvClothesBar;
     @BindView(R.id.fab_add)
     FloatingActionButton fabAdd;
+    private FragAdapter fragAdapter;
+    private View view;
 
     public static CollocationFragment newInstance(String param1) {
         CollocationFragment fragment = new CollocationFragment();
@@ -40,6 +55,7 @@ public class CollocationFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,18 +63,24 @@ public class CollocationFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frag_clothesbar, container, false);
+        view = inflater.inflate(R.layout.frag_clothesbar, container, false);
         ButterKnife.bind(this, view);
-        //initView();
+        initRecyView();
         return view;
     }
 
 
-    private void initView() {
-
+    private void initRecyView(){
+        final GridLayoutManager layoutManager = new GridLayoutManager(view.getContext(), 2);
+        rvClothesBar.setLayoutManager(layoutManager);
+        List<Integer> list=new ArrayList<>();
+        list.add(R.drawable.shirt);
+        list.add(R.drawable.shirt1);
+        list.add(R.drawable.shirt2);
+        list.add(R.drawable.shirt3);
+        ARClothesAdapter arClothesAdapter=new ARClothesAdapter(view.getContext(),list);
+        rvClothesBar.setAdapter(arClothesAdapter);
     }
-
-
 
     @Override
     public void onDestroy() {
@@ -69,6 +91,7 @@ public class CollocationFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+
     }
 
     @OnClick({R.id.rv_clothesBar, R.id.fab_add})
@@ -79,7 +102,7 @@ public class CollocationFragment extends Fragment {
             case R.id.fab_add:
                 //调用AR SDK
                 Log.e(TAG, "onViewClicked: 跳转AR页面");
-                Intent intent=new Intent(getActivity(), ARActivity.class);
+                Intent intent = new Intent(getActivity(), ARActivity.class);
                 startActivity(intent);
 
                 break;

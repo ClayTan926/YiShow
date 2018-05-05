@@ -1,15 +1,30 @@
 {
-  "images" :
-  [
+  "images": [
     {
-      "image" : "sightplus/argame00.jpg",
-      "name" : "argame"
+      "image": "sightplus/argame00.jpg",
+      "name": "argame"
     },
     {
-      "image" : "idback.jpg",
-      "name" : "idback",
-      "size" : [8.56, 5.4],
-      "uid" : "uid-string"
+      "image": "idback.jpg",
+      "name": "idback",
+      "size": [8.56, 5.4],
+      "uid": "uid-string"
+    },
+    {
+      "image": "p2.jpg",
+      "name": "person2",
+      "size": [1, 1]
+    },
+    {
+      "image": "p3.jpg",
+      "name": "person3",
+      "size": [10,10
+      ]
+    },
+    {
+      "image": "p4.jpg",
+      "name": "person4",
+      "size": [10, 10]
     }
   ]
 }

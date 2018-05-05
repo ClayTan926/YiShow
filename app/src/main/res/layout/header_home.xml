@@ -1,64 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/header_home"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/mywhite"
-        android:id="@+id/header_home">
+    android:orientation="vertical">
 
     <com.youth.banner.Banner
         android:id="@+id/home_banner"
         android:layout_width="match_parent"
-        android:layout_height="220dp">
-    </com.youth.banner.Banner>
+        android:layout_height="220dp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_height="65dp"
         android:layout_marginBottom="5dp"
-        android:paddingStart="8dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_gray"
+        android:orientation="horizontal"
         android:paddingEnd="8dp"
-        android:orientation="horizontal">
+        android:paddingStart="8dp">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-      android:layout_centerInParent="true"
-        android:layout_alignParentStart="true"
-        >
-        <TextView
-            android:id="@+id/btn_home_measure"
+        <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:background="@color/hint_gray"
-            android:gravity="center"
-            android:padding="@dimen/marginNormal"
-            android:text="@string/home_measure"
-            android:textColor="@color/mywhite"
-            android:textSize="@dimen/fontSizeS" />
-    </android.support.v7.widget.CardView>
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="50dp"
+            android:padding="2dp"
+            app:cardCornerRadius="10dp">
 
-    <android.support.v7.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_centerInParent="true"
-        android:layout_alignParentEnd="true"
-       >
-        <TextView
-            android:id="@+id/btn_home_todayPush"
+            <TextView
+                android:id="@+id/btn_home_measure"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_gray"
+                android:gravity="center"
+                android:padding="@dimen/marginNormal"
+                android:text="@string/home_measure"
+                android:textColor="@color/mywhite"
+                android:textSize="@dimen/fontSizeS"
+                android:textStyle="bold" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:text="@string/home_todayPush"
-            android:gravity="center"
-            android:padding="@dimen/marginNormal"
-            android:background="@color/hint_gray"
-            android:textColor="@color/mywhite"
-            android:textSize="@dimen/fontSizeS" />
-    </android.support.v7.widget.CardView>
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="50dp"
+            android:padding="2dp"
+            app:cardCornerRadius="10dp">
+
+            <TextView
+                android:id="@+id/btn_home_todayPush"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
+                android:background="@drawable/bg_gray"
+                android:gravity="center"
+                android:padding="@dimen/marginNormal"
+                android:text="@string/home_todayPush"
+                android:textColor="@color/mywhite"
+                android:textSize="@dimen/fontSizeS"
+                android:textStyle="bold" />
+        </android.support.v7.widget.CardView>
 
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="时尚资讯"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/myblue"/>
 </LinearLayout>

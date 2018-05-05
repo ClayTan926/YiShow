@@ -7,12 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.tzl.yishow.adapter.CollocationAdapter;
 
 /**
@@ -24,6 +26,8 @@ public class HotActivity extends AppCompatActivity {
     @BindView(R.id.rv_collocation)
     RecyclerView collocationReView;
     CollocationAdapter collocationAdapter;
+    @BindView(R.id.hot_back)
+    ImageView hotBack;
     private List<Integer> imagelist;
     private List<String> textlist;
     private List<String> numlist;
@@ -42,13 +46,13 @@ public class HotActivity extends AppCompatActivity {
         textlist = new ArrayList<>();
         numlist = new ArrayList<>();
 
-        imagelist.add(R.mipmap.cloths);
-        imagelist.add(R.mipmap.home);
-        imagelist.add(R.mipmap.category);
+        imagelist.add(R.drawable.shirt);
+        imagelist.add(R.drawable.plant);
+        imagelist.add(R.drawable.shoe2);
 
-        textlist.add("当即热门男装1");
-        textlist.add("当即热门男装2");
-        textlist.add("当即热门男装3");
+        textlist.add("当季热门1");
+        textlist.add("当季热门2");
+        textlist.add("当季热门3");
         for (int i = 0; i < imagelist.size(); i++) {
             getRandomnum(numlist);
         }
@@ -82,5 +86,10 @@ public class HotActivity extends AppCompatActivity {
             //透明导航栏
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
+    }
+
+    @OnClick(R.id.hot_back)
+    public void onViewClicked() {
+        finish();
     }
 }

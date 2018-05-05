@@ -12,14 +12,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.tzl.yishow.bean.Comment;
+import cn.tzl.yishow.bean.MyUser;
 
 public class NewCommentActivity extends AppCompatActivity {
 
@@ -32,6 +39,8 @@ public class NewCommentActivity extends AppCompatActivity {
     @BindView(R.id.btn_addComment)
     Button btnAddComment;
     private BmobUser bmobUser;
+    private MyUser user;
+    private String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +71,7 @@ public class NewCommentActivity extends AppCompatActivity {
         comment.setType("comment");
         comment.setCnun("0");
         comment.setLikenum("0");
-        comment.setAvatar("https://note.youdao.com/yws/public/resource/b4b16e1c45c7bd76d48c0cac163b32ac/xmlnote/D207AD89B7E341CFAA893EFF6B9BD261/496");
+        comment.setAvatar(getAvatar());
         comment.setCcontent(addContent.getText().toString().trim());
         comment.save(new SaveListener<String>() {
             @Override
@@ -82,6 +91,31 @@ public class NewCommentActivity extends AppCompatActivity {
 
     }
 
+    private String getAvatar() {
+        BmobQuery<MyUser> query = new BmobQuery<>();
+        query.addWhereEqualTo("username", bmobUser.getUsername());
+        query.setLimit(1);
+        query.findObjects(new FindListener<MyUser>() {
+            @Override
+            public void done(List<MyUser> list, BmobException e) {
+                if (list != null) {
+                    Log.e("person", "done: " + list.size());
+                    user = list.get(0);
+                    if (user != null) {
+                        if (user.getAvatar() != null || !user.getAvatar().equals("")) {
+                            url = user.getAvatar();
+
+                        }
+                    }
+
+                } else {
+                    Log.e("person", "done: " + e);
+                }
+            }
+        });
+        return url;
+
+    }
     @OnClick({R.id.iv_comment_back, R.id.btn_addComment})
     public void onViewClicked(View view) {
         switch (view.getId()) {

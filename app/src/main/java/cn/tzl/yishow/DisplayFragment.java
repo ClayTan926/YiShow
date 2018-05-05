@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 
@@ -74,7 +75,7 @@ public class DisplayFragment extends Fragment {
         loadAnima(false);
         displayAdapter = new DisplayAdapter(dataList);
         lRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-
+        lRecyclerView.setPullRefreshEnabled(false);
         lRecyclerViewAdapter = new LRecyclerViewAdapter(displayAdapter);
         lRecyclerView.setAdapter(lRecyclerViewAdapter);
 

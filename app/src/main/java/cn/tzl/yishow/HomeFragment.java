@@ -15,8 +15,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.github.jdsjlzx.interfaces.IRefreshHeader;
+import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 import com.youth.banner.Banner;
@@ -53,7 +56,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.layout_appBar)
     AppBarLayout mAppBarLayout;
 
-
     //@BindView(R.id.home_banner)
     Banner banner;
     //@BindView(R.id.btn_home_measure)
@@ -74,7 +76,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.main_load)
     ImageView mainLoad;
     private View headerView;
-    private List dataList = new ArrayList();
+    private List<Info> dataList = new ArrayList<>();
 
     public static HomeFragment newInstance(String param1) {
         HomeFragment fragment = new HomeFragment();
@@ -100,8 +102,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         headerView = inflater.inflate(R.layout.header_home, container, false);
         ButterKnife.bind(this, view);
         initBanner(headerView);
-        loadInfo();
         loadAnima(true);
+        loadInfo();
         initRecyclerview(headerView);
        /* LoadDataThread thread=new LoadDataThread();
         thread.run();*/
@@ -147,7 +149,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     public void initRecyclerview(View headerView) {
 
-        homeAdapter = new HomeAdapter(dataList);
+        homeAdapter = new HomeAdapter(dataList,getActivity());
         final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(headerView.getContext(), LinearLayoutManager.VERTICAL, false);
         homeRecyclerview.setLayoutManager(layoutManager);
         mLRecyclerViewAdapter = new LRecyclerViewAdapter(homeAdapter);
@@ -181,7 +183,15 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
         mLRecyclerViewAdapter.addHeaderView(headerView);
         // mLRecyclerViewAdapter.addFooterView(foot);
+        homeRecyclerview.setPullRefreshEnabled(false);
         homeRecyclerview.setAdapter(mLRecyclerViewAdapter);
+        homeRecyclerview.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Toast.makeText(getActivity(),"刷新中",Toast.LENGTH_SHORT).show();
+                homeRecyclerview.isOnTop();
+            }
+        });
 
 
     }
@@ -231,7 +241,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         query.findObjects(new FindListener<Info>() {
             @Override
             public void done(List<Info> list, BmobException e) {
-                //initRecyclerview(headerView, list);
                 if (list != null) {
                     loadAnima(false);
                     dataList = list;

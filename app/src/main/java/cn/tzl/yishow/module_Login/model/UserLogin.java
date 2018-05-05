@@ -35,6 +35,9 @@ public class UserLogin {
                     //通过BmobUser user = BmobUser.getCurrentUser()获取登录成功后的本地用户信息
                     //如果是自定义用户对象MyUser，可通过MyUser user = BmobUser.getCurrentUser(MyUser.class)获取自定义用户信息
                 }else{
+                    if (e.getErrorCode()==101){
+                        Toast.makeText(context,"用户名或者密码错误，请重试",Toast.LENGTH_SHORT).show();
+                    }
                     Log.e(TAG, "BmobException: "+e );
                 }
             }

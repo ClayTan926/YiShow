@@ -20,6 +20,7 @@ import com.mylhyl.acp.AcpOptions;
 import java.util.List;
 
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobUser;
 import cn.tzl.yishow.utils.ActivityCollector;
 import cn.tzl.yishow.view.AvatarImageView;
 

@@ -107,6 +107,10 @@ public class HelloAR
         tracker.attachStreamer(streamer);
         loadFromJsonFile(tracker, "targets.json", "argame");
         loadFromJsonFile(tracker, "targets.json", "idback");
+        loadFromJsonFile(tracker, "targets.json", "person4");
+        loadFromJsonFile(tracker, "targets.json", "person1");
+        loadFromJsonFile(tracker, "targets.json", "person2");
+        loadFromJsonFile(tracker, "targets.json", "person3");
         loadAllFromJsonFile(tracker, "targets2.json");
         loadFromImage(tracker, "namecard.jpg");
         trackers.add(tracker);

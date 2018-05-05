@@ -12,6 +12,16 @@
     {
       "image" : "sightplus/argame03.jpg",
       "name" : "argame03"
+    },
+    {
+      "image":"p2.jpg",
+      "name": "person2",
+      "size":[1,1]
+    },
+    {
+      "image":"p3.jpg",
+      "name": "person3",
+      "size":[10,10]
     }
   ]
 }

@@ -1,6 +1,7 @@
 package cn.tzl.yishow.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.ViewHolder> {
 
     private List<Comment> dataList = new ArrayList<>();
-    View view;
+    private View view;
     public DisplayAdapter(List<Comment> list) {
         this.dataList = list;
     }
@@ -59,7 +60,7 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         Comment comment = dataList.get(position);
         if (comment.getAvatar() != null) {
             Glide.with(view)
@@ -80,9 +81,14 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.ViewHold
         } else {
             holder.photo.setVisibility(View.GONE);
         }
-
         holder.comment.setText(comment.getCnum());
         holder.like.setText(comment.getLikenum());
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("sdasd", "onClick: "+position );
+            }
+        });
     }
 
     @Override

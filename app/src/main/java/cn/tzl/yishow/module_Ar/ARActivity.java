@@ -102,53 +102,7 @@ public class ARActivity extends AppCompatActivity {
             @Override
             public void onSuccess() {
                 ((ViewGroup) findViewById(R.id.preview)).addView(glView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                /*if (glView != null) {
-                    //添加surface回调函数
-                    glView.getHolder().addCallback(new SurfaceHolder.Callback() {
 
-
-                        @Override//控件创建时，打开照相机
-                        public void surfaceCreated(SurfaceHolder holder) {
-                            //打开照相机
-                            camera = Camera.open();
-                            //int cid=camera.;
-                            camera.setDisplayOrientation(90);//相机位置倒置问题，将相机回转90度，回复正常
-
-                            //设置参数
-                            Camera.Parameters parameters = camera.getParameters();
-                            parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);//1连续对焦
-                            parameters.setPictureFormat(PixelFormat.JPEG);
-                            parameters.setRotation(90); //照片旋转90度
-                            parameters.set("jpeg-quality", 100);
-                            camera.setParameters(parameters);
-                            camera.cancelAutoFocus();// 2如果要实现连续的自动对焦，这一句必须加上
-                            //将画面展示到SurfaceView
-                            try {
-                                camera.setPreviewDisplay(glView.getHolder());
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            //开启预览效果
-                            camera.startPreview();
-
-                        }
-
-                        @Override//控件改变
-                        public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
-                        }
-
-                        @Override//控件销毁
-                        public void surfaceDestroyed(SurfaceHolder holder) {
-                            //照相同一时刻只能允许一个软件打开
-                            if (camera != null) {
-                                camera.stopPreview();
-                                camera.release();//释放内存
-                                camera = null;
-                            }
-                        }
-                    });
-                }*/
             }
 
             @Override
@@ -158,14 +112,14 @@ public class ARActivity extends AppCompatActivity {
         glView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(ARActivity.this,"aaa",Toast.LENGTH_SHORT).show();
-                String filePath = Environment.getExternalStorageDirectory() + "/DCIM/img_" + System.currentTimeMillis() + ".png";
+                Toast.makeText(ARActivity.this,"保存",Toast.LENGTH_SHORT).show();
+             /*   String filePath = Environment.getExternalStorageDirectory() + "/DCIM/img_" + System.currentTimeMillis() + ".png";
                 String fileName ="img_" + System.currentTimeMillis() + ".png";
                 Bitmap bm = cropView(glView);
                 if (bm != null) {
                     preImg.setImageBitmap(bm);
                     Log.e(TAG, "onClick: "+bm.toString() );
-                }
+                }*/
                 Log.e(TAG, "onClick:  null" );
                 //savePhoto(bm);
 
