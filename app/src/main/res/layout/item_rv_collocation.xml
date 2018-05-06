@@ -29,7 +29,7 @@
             android:layout_height="20dp"
             android:layout_alignBottom="@+id/tv_collocationNo"
             android:layout_toStartOf="@+id/tv_collocationNo"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/fire" />
 
         <TextView
             android:id="@+id/tv_collocationNo"

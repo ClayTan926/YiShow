@@ -75,9 +75,7 @@ public class CollocationFragment extends Fragment {
         rvClothesBar.setLayoutManager(layoutManager);
         List<Integer> list=new ArrayList<>();
         list.add(R.drawable.shirt);
-        list.add(R.drawable.shirt1);
-        list.add(R.drawable.shirt2);
-        list.add(R.drawable.shirt3);
+        list.add(R.drawable.plant3);
         ARClothesAdapter arClothesAdapter=new ARClothesAdapter(view.getContext(),list);
         rvClothesBar.setAdapter(arClothesAdapter);
     }

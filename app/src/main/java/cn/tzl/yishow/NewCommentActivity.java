@@ -65,6 +65,7 @@ public class NewCommentActivity extends AppCompatActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
     }
+
     private void addNewComment(){
         Comment comment=new Comment();
         comment.setUsername(bmobUser.getUsername());
@@ -116,6 +117,7 @@ public class NewCommentActivity extends AppCompatActivity {
         return url;
 
     }
+
     @OnClick({R.id.iv_comment_back, R.id.btn_addComment})
     public void onViewClicked(View view) {
         switch (view.getId()) {

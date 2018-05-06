@@ -153,8 +153,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(headerView.getContext(), LinearLayoutManager.VERTICAL, false);
         homeRecyclerview.setLayoutManager(layoutManager);
         mLRecyclerViewAdapter = new LRecyclerViewAdapter(homeAdapter);
-
-        homeRecyclerview.setLScrollListener(new LRecyclerView.LScrollListener() {
+        //设置标题隐藏
+       /* homeRecyclerview.setLScrollListener(new LRecyclerView.LScrollListener() {
             @Override
             public void onScrollUp() {
             }
@@ -180,7 +180,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public void onScrollStateChanged(int state) {
 
             }
-        });
+        });*/
         mLRecyclerViewAdapter.addHeaderView(headerView);
         // mLRecyclerViewAdapter.addFooterView(foot);
         homeRecyclerview.setPullRefreshEnabled(false);

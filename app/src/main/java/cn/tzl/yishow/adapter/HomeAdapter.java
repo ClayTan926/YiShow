@@ -77,7 +77,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> im
         holder.tvTitle.setText(info.getTitle());
         holder.tvContent.setText(String.valueOf("\u3000\u3000" + info.getContent()));
         holder.tvTime.setText(info.getUpdatedAt());
-        if (info.getShowImg() != null) {
+        if (info.getShowImg() != null && !info.getShowImg().equals("")) {
             holder.ivShowImg.setVisibility(View.VISIBLE);
             Glide.with(view)
                     .load(info.getShowImg())
@@ -86,11 +86,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> im
             holder.ivShowImg.setVisibility(View.GONE);
         }
         title = info.getTitle();
-        url=info.getUrl();
+        url = info.getUrl();
         num = position;
+        //holder.itemView.setOnClickListener(this);
+        //holder.ivShowImg.setOnClickListener(this);
+       /* holder.tvContent.setOnClickListener(this);*/
         view.setOnClickListener(this);
-       /* holder.tvContent.setOnClickListener(this);
-        holder.ivShowImg.setOnClickListener(this);*/
 
     }
 

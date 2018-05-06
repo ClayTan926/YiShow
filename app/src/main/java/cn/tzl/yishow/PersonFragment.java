@@ -178,12 +178,15 @@ public class PersonFragment extends Fragment {
                 }
                 break;
             case R.id.tv_myCollection:
+                if (bmobUser!=null){
                 Intent userIntent = new Intent(view.getContext(), UserInfoActivity.class);
-                view.getContext().startActivity(userIntent);
+                view.getContext().startActivity(userIntent);}else {
+                    Toast.makeText(view.getContext(),"请登陆后使用该功能",Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.tv_helpAndFeedback:
-                Intent helpIntent = new Intent(view.getContext(), HelpActivity.class);
-                view.getContext().startActivity(helpIntent);
+              /*  Intent helpIntent = new Intent(view.getContext(), HelpActivity.class);
+                view.getContext().startActivity(helpIntent);*/
                 break;
             case R.id.tv_setting:
                 break;

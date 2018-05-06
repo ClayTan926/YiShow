@@ -117,8 +117,8 @@ public class DisplayFragment extends Fragment {
 
     @OnClick(R.id.fab_showAdd)
     public void onViewClicked() {
-        AddComment();
         if (null != bmobUser) {
+            AddComment();
             Intent intent=new Intent(view.getContext(),NewCommentActivity.class);
             startActivityForResult(intent,0);
         }else {

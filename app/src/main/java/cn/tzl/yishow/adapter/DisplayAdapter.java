@@ -26,6 +26,7 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.ViewHold
 
     private List<Comment> dataList = new ArrayList<>();
     private View view;
+
     public DisplayAdapter(List<Comment> list) {
         this.dataList = list;
     }
@@ -62,31 +63,32 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Comment comment = dataList.get(position);
-        if (comment.getAvatar() != null) {
-            Glide.with(view)
-                    .load(comment.getAvatar())
-                    .into(holder.avatar);
-        } else {
-            holder.avatar.setImageResource(R.mipmap.avaterimage);
-        }
+        if (comment.getAvatar() != null&&!comment.getAvatar().equals("")) {
+                Glide.with(view)
+                        .load(comment.getAvatar())
+                        .into(holder.avatar);
+            } else {
+                holder.avatar.setImageResource(R.mipmap.avaterimage);
+            }
         //holder.avatar.setImageResource();
         holder.userName.setText(comment.getUsername());
         holder.postTime.setText(comment.getCreatedAt());
         holder.content.setText(comment.getCcontent());
-        if (comment.getImage() != null) {
-            Glide.with(view)
-                    .load(comment.getAvatar())
-                    .into(holder.photo);
-            holder.photo.setVisibility(View.VISIBLE);
-        } else {
-            holder.photo.setVisibility(View.GONE);
-        }
+        if (comment.getImage() != null&&!comment.getImage().equals("")) {
+                Glide.with(view)
+                        .load(comment.getImage())
+                        .into(holder.photo);
+                holder.photo.setVisibility(View.VISIBLE);
+            } else {
+                holder.photo.setVisibility(View.GONE);
+            }
+
         holder.comment.setText(comment.getCnum());
         holder.like.setText(comment.getLikenum());
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("sdasd", "onClick: "+position );
+                Log.e("sdasd", "onClick: " + position);
             }
         });
     }

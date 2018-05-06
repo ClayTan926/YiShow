@@ -74,6 +74,7 @@ public class UserInfoActivity extends AppCompatActivity {
             etMobile.setText(bmobUser.getMobilePhoneNumber());
             etMail.setText(bmobUser.getEmail());
             if (url!=null) {
+                Log.e("UserInfoActivity", "loadData: "+url );
                 Glide.with(this)
                         .load(url)
                         .into(ivAvatarView);

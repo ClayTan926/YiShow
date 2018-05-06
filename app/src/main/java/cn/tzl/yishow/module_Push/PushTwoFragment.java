@@ -42,7 +42,7 @@ public class PushTwoFragment extends Fragment {
 
     private void loadData(){
         String text="\u3000\u3000炎热的夏天，清凉又不失潮流气息的T恤是基础款搭配。宽松清爽的版型，配上彰显个性" +
-                "的印花，显出独特的时髦范";
+                "的印花，显出独特的时髦范。";
         tvDescription.setText(text);
         ivAllclothes.setImageResource(R.drawable.shirt3);
         ivClothesone.setImageResource(R.drawable.shirt1);

@@ -18,7 +18,7 @@
             android:background="@color/myblack"
             android:minHeight="?attr/actionBarSize"
             android:orientation="horizontal"
-            android:paddingBottom="20dp"
+            android:paddingBottom="10dp"
             android:paddingTop="20dp">
 
             <ImageView
