@@ -18,6 +18,7 @@ import com.github.jdsjlzx.interfaces.OnRefreshListener;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -73,6 +74,8 @@ public class DisplayFragment extends Fragment {
 
     private void initView() {
         loadAnima(false);
+
+        Collections.reverse(dataList);  //将list倒过来排序
         displayAdapter = new DisplayAdapter(dataList);
         lRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         lRecyclerView.setPullRefreshEnabled(false);

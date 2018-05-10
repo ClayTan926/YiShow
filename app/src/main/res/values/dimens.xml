@@ -10,4 +10,6 @@
     <dimen name="itemPadding">8dp</dimen>
     <dimen name="marginNormal">10dp</dimen>
     <dimen name="itemPaddingS">5dp</dimen>
+    <!-- 发现和我模块的文字 图片 间隙 -->
+    <dimen name="discovery_icon_wh">45dp</dimen>
 </resources>

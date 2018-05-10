@@ -189,16 +189,21 @@ public class PersonFragment extends Fragment {
                 view.getContext().startActivity(helpIntent);*/
                 break;
             case R.id.tv_setting:
+                Intent intent=new Intent(view.getContext(),NoticeActivity.class);
+                view.getContext().startActivity(intent);
                 break;
             case R.id.tv_quit:
                 BmobUser.logOut();   //清除缓存用户对象
                 BmobUser currentUser = BmobUser.getCurrentUser(); // 现在的currentUser是null了
-                if (currentUser == null) {
+                if (currentUser != null) {
                     Log.e(TAG, "onViewClicked:  用户注销");
+                    Toast.makeText(view.getContext(),"注销成功",Toast.LENGTH_SHORT).show();
+                    ActivityCollector.finishAll();
+                    Intent loginIntent = new Intent(view.getContext(), LoginActivity.class);
+                    view.getContext().startActivity(loginIntent);
                 }
-                ActivityCollector.finishAll();
-                Intent loginIntent = new Intent(view.getContext(), LoginActivity.class);
-                view.getContext().startActivity(loginIntent);
+                //Toast.makeText(view.getContext(),"用户未登录",Toast.LENGTH_SHORT).show();
+                ((Activity)view.getContext()).finish();
                 break;
 
         }

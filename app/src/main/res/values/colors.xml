@@ -16,5 +16,10 @@
     <color name="hint_gray">#6b6a6a</color>
     <color name="bg_black">#202020</color>
     <color name="transparent">#00000000</color>
-
+    <!--单击颜色-->
+    <color name="selected_black_alpha">#1e000000</color>
+    <color name="selected_black_alpha_2x">#37000000</color>
+    <color name="selected_white_alpha">#7effffff</color>
+    <color name="bg_gray">#666666</color>
+    <color name="font_blackD2">#353535</color>
 </resources>
