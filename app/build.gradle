@@ -42,25 +42,41 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     implementation 'com.android.support:design:27.1.1'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation 'cn.bmob.android:bmob-sdk:3.5.5'
-    implementation 'cn.bmob.android:http-legacy:1.0'
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    //implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.ashokvarma.android:bottom-navigation-bar:1.3.1'
     implementation 'com.youth.banner:banner:1.4.10'
     implementation 'com.github.bumptech.glide:glide:4.4.0'
-    implementation 'com.youth.banner:banner:1.4.10'
+
     annotationProcessor 'com.github.bumptech.glide:compiler:4.4.0'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'cn.lemon:RefreshRecyclerView:1.2.2'
-    implementation 'com.github.jdsjlzx:LRecyclerView:1.4.3'
+
     implementation 'com.android.support:percent:27.1.1'
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
-    implementation 'com.zkk.view:ZkkRulerView:1.0.0'
+
     implementation 'com.github.bumptech.glide:glide:4.4.0'
     implementation 'com.mylhyl:acp:1.1.7'
+    //轮播图View
+    implementation 'com.youth.banner:banner:1.4.10'
+    //圆形View
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    //封装了刷新的recyclerView
+    implementation 'com.github.jdsjlzx:LRecyclerView:1.4.3'
+    //测量界面View
+    implementation 'com.zkk.view:ZkkRulerView:1.0.0'
+    //bmob后端云SDK
+    implementation 'cn.bmob.android:bmob-sdk:3.5.5'
+    implementation 'cn.bmob.android:http-legacy:1.0'
+    //butternife控件管理
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //retrofit,解决与Bmob包的dex文件冲突问题
+    compile('com.squareup.retrofit2:retrofit:2.4.0')
+            { exclude group: 'com.squareup.okhttp3' }
+    compile('com.squareup.retrofit2:converter-gson:2.1.0')
+            { exclude group: 'com.google.code.gson'
+                exclude group: 'com.squareup.okhttp3' }
+
 }
