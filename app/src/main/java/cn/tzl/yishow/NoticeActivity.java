@@ -4,11 +4,14 @@ import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Vibrator;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -25,6 +28,7 @@ public class NoticeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        TransparentActionBar();
         setContentView(R.layout.act_notice);
         notice =  findViewById(R.id.switch_notice);
         vibrate = findViewById(R.id.switch_shake);
@@ -79,6 +83,18 @@ public class NoticeActivity extends AppCompatActivity {
             }
         });
 
+    }
+    private void TransparentActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
     }
 
 }

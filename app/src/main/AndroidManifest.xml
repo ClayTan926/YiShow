@@ -38,6 +38,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".HelpActivity" />
         <activity android:name=".module_Login.activity.RegisterActivity" />
+        <activity android:name=".NoticeActivity"/>
         <activity
             android:name=".module_Login.activity.LoginActivity"
             android:label="@string/title_activity_login"
