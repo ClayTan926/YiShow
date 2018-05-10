@@ -58,8 +58,8 @@ public class Home_measureActivity extends AppCompatActivity {
             initView();
         } else {
             Toast.makeText(this, "未登录，请登陆后使用该功能", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivityForResult(intent,0);
+           /* Intent intent = new Intent(this, LoginActivity.class);
+            startActivityForResult(intent,0);*/
             finish();
         }
         checkData();

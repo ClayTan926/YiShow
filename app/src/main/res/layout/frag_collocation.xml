@@ -19,7 +19,7 @@
             android:background="@color/myblack"
             android:minHeight="?attr/actionBarSize"
             android:orientation="horizontal"
-            android:paddingBottom="8dp"
+            android:paddingBottom="15dp"
             android:paddingTop="20dp">
             <ImageView
                 android:id="@+id/hot_back"

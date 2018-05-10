@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,8 +41,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.easyar.Engine;
 import cn.tzl.yishow.R;
-import cn.tzl.yishow.bean.BodyParameter;
-import cn.tzl.yishow.bean.HumanBody;
+import cn.tzl.yishow.bean.BodyParameterBean;
+import cn.tzl.yishow.bean.HumanBodyBean;
 import cn.tzl.yishow.service.NetService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -100,6 +101,8 @@ public class ARActivity extends AppCompatActivity {
         }
 
         glView = new GLView(getApplicationContext());
+        //glView.setDrawingCacheEnabled(true);
+
 
         requestCameraPermission(new PermissionCallback() {
             @Override
@@ -116,16 +119,19 @@ public class ARActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(ARActivity.this, "保存", Toast.LENGTH_SHORT).show();
-                BodyDetect(null);
-             /*   String filePath = Environment.getExternalStorageDirectory() + "/DCIM/img_" + System.currentTimeMillis() + ".png";
-                String fileName ="img_" + System.currentTimeMillis() + ".png";
-                Bitmap bm = cropView(glView);
-                if (bm != null) {
-                    preImg.setImageBitmap(bm);
-                    Log.e(TAG, "onClick: "+bm.toString() );
-                }*/
+                //Bitmap bm = cropView(glView);
+
+
+
+          /*
+                glView.buildDrawingCache();
+                Bitmap a=glView.getDrawingCache();
+                if (a != null) {
+                    BodyDetect(a);
+                    Log.e(TAG, "onClick: "+a.toString() );
+                }
                 Log.e(TAG, "onClick:  ");
-                //savePhoto(bm);
+*/
 
             }
         });
@@ -142,12 +148,13 @@ public class ARActivity extends AppCompatActivity {
         Log.e(TAG, "cropView: " + view.toString());
         view.measure(View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.UNSPECIFIED),
                 View.MeasureSpec.makeMeasureSpec(100, View.MeasureSpec.UNSPECIFIED));
-        Log.e(TAG, "cropView: " + view.getHeight() + "ss " + view.getWidth());
+        Log.e(TAG, "View: " + view.getHeight() + "ss " + view.getWidth());
         view.layout(0, 0, view.getMeasuredWidth(), view.getMeasuredHeight());
-        view.setDrawingCacheEnabled(true);
-        view.buildDrawingCache(true);
-
+        Log.e(TAG, "ViewLayout: ");
+       // view.setDrawingCacheEnabled(true);
+        view.buildDrawingCache();
         Bitmap bitmap = view.getDrawingCache();
+
         if (bitmap != null) {
             Log.e(TAG, "cropView: bitmap" + bitmap.toString());
         } else {
@@ -183,7 +190,7 @@ public class ARActivity extends AppCompatActivity {
     }
 
     //截图方法
-    private void Screenshots() {
+    private Bitmap Screenshots() {
         View dView = getWindow().getDecorView();
         dView.setDrawingCacheEnabled(true);
         dView.buildDrawingCache();
@@ -225,6 +232,7 @@ public class ARActivity extends AppCompatActivity {
             } catch (Exception e) {
             }
         }
+        return bitmap;
     }
 
     private void savePhoto(Bitmap bitmap) {
@@ -302,15 +310,6 @@ public class ARActivity extends AppCompatActivity {
                 //takePhoto(view);
                 break;
             case R.id.screenshots:
-              /*  //Screenshots();
-                //cropView(glView);
-                Button b=findViewById(R.id.screenshots);
-                Bitmap bm = cropView(glView);
-                if (bm != null) {
-                    preImg.setImageBitmap(bm);
-                }*/
-                //b.setVisibility(View.GONE);
-                //Toast.makeText(getApplicationContext(), "成功保存", Toast.LENGTH_SHORT).show();
 
                 break;
         }
@@ -428,20 +427,20 @@ public class ARActivity extends AppCompatActivity {
                 .build();
         NetService netService = retrofit.create(NetService.class);
         //上传图片
-        Call<BodyParameter> call = netService.bodyDetect(API_KEY, API_SECRET, getBitmapFile(bitmap));
+        Call<BodyParameterBean> call = netService.bodyDetect(API_KEY, API_SECRET, getBitmapFile(bitmap));
         //异步获取到返回的数据
-        call.enqueue(new Callback<BodyParameter>() {
+        call.enqueue(new Callback<BodyParameterBean>() {
             @Override
-            public void onResponse(Call<BodyParameter> call, Response<BodyParameter> response) {
+            public void onResponse(Call<BodyParameterBean> call, Response<BodyParameterBean> response) {
                 if (response.body() != null) {
                     Log.e(TAG, "onResponse: 已连接");
                     if (response.body().getImage_id() != null) {
                         Toast.makeText(getApplicationContext(), "识别成功", Toast.LENGTH_SHORT).show();
-                        List<HumanBody> list=response.body().getHumanbodies();
-                        for (HumanBody humanBody :list){
-                            Log.e(TAG, "onResponse: rectangle:"+ humanBody.getHumanbody_rectangle() );
-                            Log.e(TAG, "onResponse: Attributes:"+ humanBody.getAttributes() );
-                            Log.e(TAG, "onResponse: Confidence:"+ humanBody.getConfidence() );
+                        List<HumanBodyBean> list=response.body().getHumanbodies();
+                        for (HumanBodyBean humanBodyBean :list){
+                            Log.e(TAG, "onResponse: rectangle:"+ humanBodyBean.getHumanbody_rectangle() );
+                            Log.e(TAG, "onResponse: Attributes:"+ humanBodyBean.getAttributes() );
+                            Log.e(TAG, "onResponse: Confidence:"+ humanBodyBean.getConfidence() );
                         }
 
 
@@ -455,7 +454,7 @@ public class ARActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<BodyParameter> call, Throwable t) {
+            public void onFailure(Call<BodyParameterBean> call, Throwable t) {
                 Log.e(TAG, "onFailure: 获取数据失败,Throwable:" + t.toString());
             }
         });

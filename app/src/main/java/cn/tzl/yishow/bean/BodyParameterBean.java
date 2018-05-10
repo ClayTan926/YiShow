@@ -6,7 +6,7 @@ import java.util.List;
  * Created by Netted on 2018/5/8.
  */
 
-public class BodyParameter {
+public class BodyParameterBean {
     private String request_id;
     private String result;
     private String image_id;

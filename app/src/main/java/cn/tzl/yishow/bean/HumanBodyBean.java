@@ -4,7 +4,7 @@ package cn.tzl.yishow.bean;
  * Created by Netted on 2018/5/8.
  */
 
-public class HumanBody {
+public class HumanBodyBean {
     private Float confidence;
     private Object humanbody_rectangle;
     private Object attributes;

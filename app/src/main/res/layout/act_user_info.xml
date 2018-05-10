@@ -20,7 +20,7 @@
             android:background="@color/myblack"
             android:orientation="horizontal"
             android:paddingTop="20dp"
-            android:paddingBottom="10dp">
+            android:paddingBottom="15dp">
 
             <ImageView
                 android:id="@+id/iv_user_back"

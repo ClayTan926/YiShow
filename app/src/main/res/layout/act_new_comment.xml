@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/myblack"
-            android:paddingBottom="10dp"
+            android:paddingBottom="15dp"
             android:paddingTop="20dp">
 
             <ImageView

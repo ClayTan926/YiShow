@@ -117,7 +117,8 @@ public class WelcomeActivity extends AppCompatActivity {
     private void actionStart() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-         finish();
+        ActivityCollector.finishAll();
+        finish();
     }
     private int getCount() {
         count--;
